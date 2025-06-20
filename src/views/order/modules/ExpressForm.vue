@@ -16,7 +16,7 @@
           <div class="info-item">
             <div class="item-lable">物流公司：</div>
             <div class="item-content">
-              <span v-if="record.delivery_method == 20">无需物流</span>
+              <span v-if="record.delivery_method == DeliveryMethodEnum.NORMAL.value">无需物流</span>
               <span v-else>{{ record.express ? record.express.express_name : '--' }}</span>
             </div>
           </div>
@@ -56,7 +56,9 @@
 </template>
 
 <script>
+import { assignment } from '@/utils/util'
 import * as DeliveryApi from '@/api/order/delivery'
+import { DeliveryMethodEnum } from '@/common/enum/order/delivery'
 
 export default {
   data () {
@@ -76,6 +78,9 @@ export default {
       // 物流跟踪信息
       traces: []
     }
+  },
+  beforeCreate () {
+    assignment(this, { DeliveryMethodEnum })
   },
   created () {
   },

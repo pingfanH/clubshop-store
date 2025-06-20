@@ -254,10 +254,13 @@
                   </a-descriptions-item>
                   <a-descriptions-item
                     label="物流公司"
-                  >{{ item.delivery_method == 20 ? '无需物流' : item.express.express_name }}</a-descriptions-item>
+                  >{{ item.delivery_method == DeliveryMethodEnum.NORMAL.value ? '无需物流' : item.express.express_name }}</a-descriptions-item>
                   <a-descriptions-item label="物流单号">{{ item.express_no ? item.express_no : '--' }}</a-descriptions-item>
-                  <a-descriptions-item label="物流跟踪">
-                    <a href="javascript:;" @click="handleShowExpress(index)">点击查看</a>
+                  <a-descriptions-item
+                    v-if="item.delivery_method != DeliveryMethodEnum.NORMAL.value"
+                    label="物流跟踪"
+                  >
+                    <a href="javascript:void(0);" @click="handleShowExpress(index)">点击查看</a>
                   </a-descriptions-item>
                 </a-descriptions>
                 <!-- 发货商品列表 -->
@@ -319,6 +322,7 @@ import {
   ReceiptStatusEnum
 } from '@/common/enum/order'
 import { PaymentMethodEnum } from '@/common/enum/payment'
+import { DeliveryMethodEnum } from '@/common/enum/order/delivery'
 
 // 商品内容表头
 const goodsColumns = [
@@ -376,6 +380,7 @@ export default {
       PayStatusEnum,
       ReceiptStatusEnum,
       PaymentMethodEnum,
+      DeliveryMethodEnum,
       // 外部方法
       inArray,
       // 正在加载
