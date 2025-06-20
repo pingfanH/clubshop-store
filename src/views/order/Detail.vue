@@ -121,8 +121,8 @@
           </a-descriptions-item>
           <a-descriptions-item label="买家信息">
             <a-tooltip>
-              <template slot="title">会员ID: {{ record.user.user_id }}</template>
-              <span class="c-p">{{ record.user.nick_name }}</span>
+              <template slot="title">会员ID: {{ record.user ? record.user.user_id : '-' }}</template>
+              <span class="c-p">{{ record.user ? record.user.nick_name: '-' }}</span>
             </a-tooltip>
           </a-descriptions-item>
           <a-descriptions-item label="买家留言">
