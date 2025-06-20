@@ -12,14 +12,21 @@ import guide from './guide.svg?inline'
 import richText from './richText.svg?inline'
 import blank from './blank.svg?inline'
 import officialAccount from './officialAccount.svg?inline'
+import shop from './shop.svg?inline'
+import bargain from './bargain.svg?inline'
 import coupon from './coupon.svg?inline'
 import hotZone from './hotZone.svg?inline'
 import special from './special.svg?inline'
+import groupon from './groupon.svg?inline'
 import ICPLicense from './ICPLicense.svg?inline'
 import title from './title.svg?inline'
+import goodsGroup from './goodsGroup.svg?inline'
+import pointsMall from './pointsMall.svg?inline'
+
+import { sharp } from '../index'
 
 export {
     image, banner, article, navBar, notice, search, video, window, goods, service,
-    guide, richText, blank, officialAccount, coupon, hotZone,
-    special, ICPLicense, title
+    guide, richText, blank, officialAccount, shop, bargain, sharp, coupon, hotZone,
+    special, groupon, ICPLicense, title, goodsGroup, pointsMall
 }
