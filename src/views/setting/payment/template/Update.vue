@@ -146,7 +146,6 @@
                 >
                   <a-radio value="publicKey">
                     <span>微信支付公钥</span>
-                    <a-tag class="ml-5" color="green">推荐</a-tag>
                   </a-radio>
                   <a-radio value="platformCert">平台证书</a-radio>
                 </a-radio-group>
@@ -290,7 +289,6 @@
                 >
                   <a-radio value="publicKey">
                     <span>微信支付公钥</span>
-                    <a-tag class="ml-5" color="green">推荐</a-tag>
                   </a-radio>
                   <a-radio value="platformCert">平台证书</a-radio>
                 </a-radio-group>
