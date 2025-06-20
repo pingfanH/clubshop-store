@@ -182,11 +182,11 @@
             <span slot="total_price" slot-scope="text">￥{{ text }}</span>
           </a-table>
           <!-- 订单价格明细 -->
-          <div class="order-price">
+          <div class="order-price clearfix">
             <table class="fl-r">
               <tbody>
                 <tr>
-                  <td>订单总额：</td>
+                  <td>订单金额：</td>
                   <td>￥{{ record.total_price }}</td>
                 </tr>
                 <tr v-if="record.coupon_money > 0">
@@ -208,7 +208,7 @@
                 <tr>
                   <td>实付款金额：</td>
                   <td>
-                    <strong>￥{{ record.pay_price }}</strong>
+                    <strong class="c-p f-15">￥{{ record.pay_price }}</strong>
                   </td>
                 </tr>
               </tbody>

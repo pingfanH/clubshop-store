@@ -18,7 +18,7 @@
         </a-form-item>
         <a-form-item label="文章分类" :labelCol="labelCol" :wrapperCol="wrapperCol">
           <a-select
-            v-decorator="['category_id', { rules: [{ required: true, message: '请选择1个商品分类' }] }]"
+            v-decorator="['category_id', { rules: [{ required: true, message: '请选择文章分类' }] }]"
           >
             <a-select-option
               v-for="(item, index) in categoryList"
