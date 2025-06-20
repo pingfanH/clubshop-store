@@ -437,11 +437,11 @@
             <div class="item-top">
               <span>关联的公众号</span>
             </div>
-            <div class="item-content clearfix">
-              <div class="item-cont-avatar fl-l">
-                <img src="~@/assets/img/circular.png" alt />
+            <div class="item-content">
+              <div class="item-cont-avatar">
+                <img class="image" src="~@/assets/img/circular.png" alt />
               </div>
-              <div class="item-cont-public fl-l">
+              <div class="item-cont-public">
                 <div class="public-name">
                   <span>公众号名称</span>
                 </div>
@@ -449,7 +449,7 @@
                   <span>公众号简介公众号简介公众号简介</span>
                 </div>
               </div>
-              <div class="item-cont-active fl-l">
+              <div class="item-cont-active">
                 <div class="active-btn">
                   <span>关注</span>
                 </div>
