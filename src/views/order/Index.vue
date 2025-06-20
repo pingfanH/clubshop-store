@@ -7,11 +7,11 @@
         <a-row class="row-item-search">
           <a-form class="search-form" :form="searchForm" layout="inline" @submit="handleSearch">
             <a-form-item label="关键词">
-              <a-input style="width: 337px" placeholder="请输入关键词" v-decorator="['searchValue']">
+              <a-input style="width: 350px" placeholder="请输入关键词" v-decorator="['searchValue']">
                 <a-select
                   slot="addonBefore"
                   v-decorator="['searchType', { initialValue: 10 }]"
-                  style="width: 100px"
+                  style="width: 150px"
                 >
                   <a-select-option
                     v-for="(item, index) in SearchTypeEnum"
@@ -117,9 +117,12 @@
                           <UserItem :user="item.user" />
                         </td>
                         <td :rowspan="item.goods.length">
-                          <a-tag
-                            v-if="item.pay_method"
-                          >{{ PaymentMethodEnum[item.pay_method].name }}</a-tag>
+                          <a-tooltip v-if="item.pay_method">
+                            <template
+                              slot="title"
+                            >第三方支付订单号: {{ item.trade ? item.trade.out_trade_no : '-' }}</template>
+                            <a-tag>{{ PaymentMethodEnum[item.pay_method].name }}</a-tag>
+                          </a-tooltip>
                           <span v-else>--</span>
                         </td>
                         <td :rowspan="item.goods.length">
@@ -272,7 +275,8 @@ const columns = [
 
 // 搜索关键词类型枚举
 const SearchTypeEnum = [
-  { name: '订单号', value: 10 },
+  { name: '商城订单号', value: 10 },
+  { name: '第三方支付订单号', value: 60 },
   { name: '会员昵称', value: 20 },
   { name: '会员ID', value: 30 },
   { name: '收货人姓名', value: 40 },
