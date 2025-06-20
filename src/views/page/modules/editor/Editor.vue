@@ -51,7 +51,7 @@
                   class="rest-color"
                   @click="onEditorResetColor(data.page.style, 'titleBackgroundColor', '#fff')"
                 >重置</span>
-                <colorPicker v-model="data.page.style.titleBackgroundColor" />
+                <MyColorPicker v-model="data.page.style.titleBackgroundColor" />
               </div>
             </div>
           </div>
@@ -108,7 +108,7 @@
                     class="rest-color"
                     @click="onEditorResetColor(curItem.style, 'searchBg', '#fff')"
                   >重置</span>
-                  <colorPicker v-model="curItem.style.searchBg" />
+                  <MyColorPicker v-model="curItem.style.searchBg" />
                 </div>
               </div>
               <div class="block-item">
@@ -118,7 +118,7 @@
                     class="rest-color"
                     @click="onEditorResetColor(curItem.style, 'searchFontColor', '#999999')"
                   >重置</span>
-                  <colorPicker v-model="curItem.style.searchFontColor" />
+                  <MyColorPicker v-model="curItem.style.searchFontColor" />
                 </div>
               </div>
             </div>
@@ -131,7 +131,7 @@
                     class="rest-color"
                     @click="onEditorResetColor(curItem.style, 'background', '#f1f1f2')"
                   >重置</span>
-                  <colorPicker v-model="curItem.style.background" />
+                  <MyColorPicker v-model="curItem.style.background" />
                 </div>
               </div>
               <div class="block-item">
@@ -180,7 +180,7 @@
                 class="rest-color"
                 @click="onEditorResetColor(curItem.style, 'background', '#fff')"
               >重置</span>
-              <colorPicker v-model="curItem.style.background" />
+              <MyColorPicker v-model="curItem.style.background" />
             </div>
           </div>
         </div>
@@ -205,7 +205,7 @@
                 class="rest-color"
                 @click="onEditorResetColor(curItem.style, 'lineColor', '#000')"
               >重置</span>
-              <colorPicker v-model="curItem.style.lineColor" />
+              <MyColorPicker v-model="curItem.style.lineColor" />
             </div>
           </div>
           <div class="block-item">
@@ -235,7 +235,7 @@
                 class="rest-color"
                 @click="onEditorResetColor(curItem.style, 'background', '#fff')"
               >重置</span>
-              <colorPicker v-model="curItem.style.background" />
+              <MyColorPicker v-model="curItem.style.background" />
             </div>
           </div>
         </div>
@@ -282,7 +282,7 @@
                     class="rest-color"
                     @click="onEditorResetColor(curItem.style, 'background', '#fff')"
                   >重置</span>
-                  <colorPicker v-model="curItem.style.background" />
+                  <MyColorPicker v-model="curItem.style.background" />
                 </div>
               </div>
             </div>
@@ -328,7 +328,7 @@
                     class="rest-color"
                     @click="onEditorResetColor(curItem.style, 'textColor', '#000')"
                   >重置</span>
-                  <colorPicker v-model="curItem.style.textColor" />
+                  <MyColorPicker v-model="curItem.style.textColor" />
                 </div>
               </div>
               <div class="block-item">
@@ -338,7 +338,7 @@
                     class="rest-color"
                     @click="onEditorResetColor(curItem.style, 'background', '#fff')"
                   >重置</span>
-                  <colorPicker v-model="curItem.style.background" />
+                  <MyColorPicker v-model="curItem.style.background" />
                 </div>
               </div>
             </div>
@@ -520,7 +520,7 @@
                     class="rest-color"
                     @click="onEditorResetColor(curItem.style, 'background', '#ffffff')"
                   >重置</span>
-                  <colorPicker v-model="curItem.style.background" />
+                  <MyColorPicker v-model="curItem.style.background" />
                 </div>
               </div>
             </div>
@@ -597,7 +597,7 @@
                     class="rest-color"
                     @click="onEditorResetColor(curItem.style, 'background', '#fff')"
                   >重置</span>
-                  <colorPicker v-model="curItem.style.background" />
+                  <MyColorPicker v-model="curItem.style.background" />
                 </div>
               </div>
             </div>
@@ -697,7 +697,7 @@
                     class="rest-color"
                     @click="onEditorResetColor(curItem.style, 'background', '#fff')"
                   >重置</span>
-                  <colorPicker v-model="curItem.style.background" />
+                  <MyColorPicker v-model="curItem.style.background" />
                 </div>
               </div>
             </div>
@@ -718,7 +718,7 @@
                     class="rest-color"
                     @click="onEditorResetColor(curItem.style, 'btnColor', '#fff')"
                   >重置</span>
-                  <colorPicker v-model="curItem.style.btnColor" />
+                  <MyColorPicker v-model="curItem.style.btnColor" />
                 </div>
               </div>
               <div class="block-item">
@@ -831,7 +831,7 @@
                     class="rest-color"
                     @click="onEditorResetColor(curItem.style, 'priceColor', '#ff1051')"
                   >重置</span>
-                  <colorPicker v-model="curItem.style.priceColor" />
+                  <MyColorPicker v-model="curItem.style.priceColor" />
                 </div>
               </div>
               <div class="block-item">
@@ -841,7 +841,7 @@
                     class="rest-color"
                     @click="onEditorResetColor(curItem.style, 'sellingColor', '#e3771f')"
                   >重置</span>
-                  <colorPicker v-model="curItem.style.sellingColor" />
+                  <MyColorPicker v-model="curItem.style.sellingColor" />
                 </div>
               </div>
               <div class="block-item">
@@ -867,7 +867,7 @@
                       class="rest-color"
                       @click="onEditorResetColor(curItem.style, 'btnCartColor', '#27c29a')"
                     >重置</span>
-                    <colorPicker v-model="curItem.style.btnCartColor" />
+                    <MyColorPicker v-model="curItem.style.btnCartColor" />
                   </div>
                 </div>
               </template>
@@ -931,7 +931,7 @@
                     class="rest-color"
                     @click="onEditorResetColor(curItem.style, 'background', '#ffffff')"
                   >重置</span>
-                  <colorPicker v-model="curItem.style.background" />
+                  <MyColorPicker v-model="curItem.style.background" />
                 </div>
               </div>
             </div>
@@ -1002,7 +1002,7 @@
                     class="rest-color"
                     @click="onEditorResetColor(curItem.style, 'textColor', '#000')"
                   >重置</span>
-                  <colorPicker v-model="curItem.style.textColor" />
+                  <MyColorPicker v-model="curItem.style.textColor" />
                 </div>
               </div>
             </div>
@@ -1025,7 +1025,7 @@
                     class="rest-color"
                     @click="onEditorResetColor(curItem.style, 'background', '#fff')"
                   >重置</span>
-                  <colorPicker v-model="curItem.style.background" />
+                  <MyColorPicker v-model="curItem.style.background" />
                 </div>
               </div>
             </div>
@@ -1110,7 +1110,7 @@
                     class="rest-color"
                     @click="onEditorResetColor(curItem.style, 'background', '#fff')"
                   >重置</span>
-                  <colorPicker v-model="curItem.style.background" />
+                  <MyColorPicker v-model="curItem.style.background" />
                 </div>
               </div>
             </div>
@@ -1178,7 +1178,7 @@
                     class="rest-color"
                     @click="onEditorResetColor(curItem.style, 'background', '#fff')"
                   >重置</span>
-                  <colorPicker v-model="curItem.style.background" />
+                  <MyColorPicker v-model="curItem.style.background" />
                 </div>
               </div>
             </div>
@@ -1375,7 +1375,7 @@
                     class="rest-color"
                     @click="onEditorResetColor(curItem.style, 'textColor', '#000')"
                   >重置</span>
-                  <colorPicker v-model="curItem.style.textColor" />
+                  <MyColorPicker v-model="curItem.style.textColor" />
                 </div>
               </div>
               <div class="block-item">
@@ -1385,7 +1385,7 @@
                     class="rest-color"
                     @click="onEditorResetColor(curItem.style, 'background', '#fff')"
                   >重置</span>
-                  <colorPicker v-model="curItem.style.background" />
+                  <MyColorPicker v-model="curItem.style.background" />
                 </div>
               </div>
             </div>
@@ -1451,7 +1451,7 @@
                     class="rest-color"
                     @click="onEditorResetColor(curItem.style, 'textColor', '#696969')"
                   >重置</span>
-                  <colorPicker v-model="curItem.style.textColor" />
+                  <MyColorPicker v-model="curItem.style.textColor" />
                 </div>
               </div>
             </div>
@@ -1484,7 +1484,7 @@
                     class="rest-color"
                     @click="onEditorResetColor(curItem.style, 'background', '#fff')"
                   >重置</span>
-                  <colorPicker v-model="curItem.style.background" />
+                  <MyColorPicker v-model="curItem.style.background" />
                 </div>
               </div>
             </div>
@@ -1587,7 +1587,7 @@
                     class="rest-color"
                     @click="onEditorResetColor(curItem.style, 'titleTextColor', '#323233')"
                   >重置</span>
-                  <colorPicker v-model="curItem.style.titleTextColor" />
+                  <MyColorPicker v-model="curItem.style.titleTextColor" />
                 </div>
               </div>
               <div class="block-item">
@@ -1597,7 +1597,7 @@
                     class="rest-color"
                     @click="onEditorResetColor(curItem.style, 'descTextColor', '#969799')"
                   >重置</span>
-                  <colorPicker v-model="curItem.style.descTextColor" />
+                  <MyColorPicker v-model="curItem.style.descTextColor" />
                 </div>
               </div>
               <div class="block-item">
@@ -1607,7 +1607,7 @@
                     class="rest-color"
                     @click="onEditorResetColor(curItem.style, 'moreTextColor', '#969799')"
                   >重置</span>
-                  <colorPicker v-model="curItem.style.moreTextColor" />
+                  <MyColorPicker v-model="curItem.style.moreTextColor" />
                 </div>
               </div>
             </div>
@@ -1630,7 +1630,7 @@
                     class="rest-color"
                     @click="onEditorResetColor(curItem.style, 'background', '#fff')"
                   >重置</span>
-                  <colorPicker v-model="curItem.style.background" />
+                  <MyColorPicker v-model="curItem.style.background" />
                 </div>
               </div>
             </div>
