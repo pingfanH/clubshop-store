@@ -85,5 +85,8 @@ export default {
     height: 100%;
     border: 1px solid #000;
   }
+  .one-colorpanel {
+    z-index: 10;
+  }
 }
 </style>

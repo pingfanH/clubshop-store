@@ -43,8 +43,11 @@ import draggable from 'vuedraggable'
 import { pick, cloneDeep } from 'lodash'
 import { GoodsModal } from '@/components/Modal'
 
+// 主键字段
+const primaryKey = 'goods_id'
+
 // 仅需要的字段
-const itemColumns = ['goods_id', 'goods_name', 'goods_image', 'goods_price_min', 'line_price_min', 'selling_point', 'goods_sales']
+const itemColumns = [primaryKey, 'goods_name', 'goods_image', 'goods_price_min', 'line_price_min', 'selling_point', 'goods_sales']
 
 // 商品选择器组件
 export default {
@@ -101,7 +104,7 @@ export default {
 
     // 过滤仅需要的数据
     filterItems (selectedItems) {
-      return selectedItems.map(itm => pick(itm, itemColumns))
+      return selectedItems.filter(item => item[primaryKey] != undefined).map(itm => pick(itm, itemColumns))
     },
 
     // 删除商品

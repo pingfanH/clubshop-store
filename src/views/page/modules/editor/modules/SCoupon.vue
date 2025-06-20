@@ -36,8 +36,11 @@ import draggable from 'vuedraggable'
 import { pick, cloneDeep } from 'lodash'
 import { CouponModal } from '@/components/Modal'
 
+// 主键字段
+const primaryKey = 'coupon_id'
+
 // 仅需要的字段
-const itemColumns = ['coupon_id', 'name', 'coupon_type', 'reduce_price', 'discount', 'min_price']
+const itemColumns = [primaryKey, 'name', 'coupon_type', 'reduce_price', 'discount', 'min_price']
 
 // 优惠券选择器组件(仅适用于页面设计)
 export default {
@@ -92,7 +95,7 @@ export default {
 
     // 过滤仅需要的数据
     filterItems (selectedItems) {
-      return selectedItems.map(itm => pick(itm, itemColumns))
+      return selectedItems.filter(item => item[primaryKey] != undefined).map(itm => pick(itm, itemColumns))
     },
 
     // 删除优惠券

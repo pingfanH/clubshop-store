@@ -160,7 +160,7 @@
           <div v-else-if="item.type == 'article'" class="diy-article">
             <div
               class="article-item"
-              v-for="(dataItm, dataIdx) in (item.params.source == 'choice' ? item.data : item.defaultData)"
+              v-for="(dataItm, dataIdx) in (item.params.source == 'choice' && item.data.length ? item.data : item.defaultData)"
               :key="`${index}_${dataIdx}`"
               :class="`show-type__${dataItm.show_type}`"
             >
@@ -270,7 +270,7 @@
             >
               <div
                 class="goods-item"
-                v-for="(dataItm, dataIdx) in (item.params.source == 'choice' ? item.data : item.defaultData)"
+                v-for="(dataItm, dataIdx) in (item.params.source == 'choice' && item.data.length ? item.data : item.defaultData)"
                 :key="`${index}_${dataIdx}`"
                 :class="[`display-${item.style.cardType}`]"
                 :style="{ marginBottom: `${item.style.itemMargin}px`, borderRadius: `${item.style.borderRadius}px` }"
@@ -466,7 +466,7 @@
             <div class="coupon-wrapper">
               <div
                 class="coupon-item"
-                v-for="(coupon, idx) in (item.params.source == 'choice' ? (item.data.length ? item.data : item.defaultData) : item.defaultData)"
+                v-for="(coupon, idx) in (item.params.source == 'choice' && item.data.length ? item.data : item.defaultData)"
                 :key="idx"
                 :style="{ marginRight: `${item.style.marginRight}px` }"
               >
@@ -512,7 +512,7 @@
               <ul class="special-content-list">
                 <li
                   class="content-item oneline-hide"
-                  v-for="(dataItm, idx) in (item.params.source == 'choice' ? item.data : item.defaultData)"
+                  v-for="(dataItm, idx) in (item.params.source == 'choice' && item.data.length ? item.data : item.defaultData)"
                   :key="idx"
                 >
                   <span :style="{ color: item.style.textColor }">{{ dataItm.title }}</span>
