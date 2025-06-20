@@ -1,38 +1,35 @@
 <template>
-  <div class="color-picker" :style="{ width: `${width}px` }">
-    <color-picker v-model="sValue" :position="positionCom" @change="onChange" />
-    <!-- <div class="color-btn"></div>
-    <div class="picker-box">
-    </div>-->
+  <div class="color-picker-link">
+    <MyColorPicker v-model="sValue[0]" :width="width" :horizontal="horizontal" />
+    <div class="link">
+      <a-icon class="icon" :component="Icons.link" />
+    </div>
+    <MyColorPicker v-model="sValue[1]" :width="width" :horizontal="horizontal" />
   </div>
 </template>
 
 <script>
-import Vue from 'vue'
 import PropTypes from 'ant-design-vue/es/_util/vue-types'
-import { ColorPicker, ColorPanel } from 'one-colorpicker'
-
-// Vue.use(ColorPicker)
-Vue.use(ColorPanel)
+import * as Icons from '@/core/icons'
+import MyColorPicker from '@/components/MyColorPicker'
 
 // 颜色选择器
 export default {
-  name: 'MyColorPicker',
+  name: 'MyColorPickerLink',
   model: {
     prop: 'value',
     event: 'change'
   },
   props: {
-    // v-model 当前颜色值 hex srgb
-    value: PropTypes.string.def(''),
+    // v-model 当前颜色值 (数组)
+    value: PropTypes.array.def([]),
     // 选择器宽度
-    width: PropTypes.integer.def(60),
+    width: PropTypes.integer.def(50),
     // 显示位置 right left
     horizontal: PropTypes.string.def('right'),
   },
   components: {
-    ColorPicker,
-    // ColorPanel,
+    MyColorPicker
   },
   computed: {
     positionCom () {
@@ -43,8 +40,9 @@ export default {
   },
   data () {
     return {
+      Icons,
       // 当前值
-      sValue: ''
+      sValue: ['#fff', '#000']
     }
   },
   watch: {
@@ -68,22 +66,15 @@ export default {
 </script>
 
 <style lang="less" scoped>
-.color-picker {
-  display: block;
-  background-color: #ffffff;
-  border: 1px solid #efefef;
-  padding: 5px;
-  width: 32px;
-  height: 32px;
+.color-picker-link {
+  display: flex;
   position: relative;
-}
-/deep/.one-colorpicker {
-  width: 100%;
-  height: 100%;
-  .color-block {
-    width: 100%;
-    height: 100%;
-    border: 1px solid #000;
+  .link {
+    line-height: 32px;
+    font-size: 20px;
+    color: #707070;
+    margin: 0 -3px;
+    z-index: 2;
   }
 }
 </style>
