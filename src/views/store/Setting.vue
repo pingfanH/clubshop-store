@@ -9,7 +9,7 @@
           />
         </a-form-item>
         <a-form-item label="商城简介" :labelCol="labelCol" :wrapperCol="wrapperCol">
-          <a-textarea v-decorator="['describe']" />
+          <a-textarea v-decorator="['describe']" :autoSize="{ minRows: 4, maxRows: 8 }" />
         </a-form-item>
         <a-form-item
           label="商城Logo"

@@ -38,8 +38,8 @@
               <a-form-item label="管理员备注" :labelCol="labelCol" :wrapperCol="wrapperCol">
                 <a-textarea
                   placeholder="请输入管理员备注"
-                  :rows="3"
-                  v-decorator="[`${RECHARGE_TYPE_BALANCE}.remark`, { rules: [{ required: true, message: '请输入管理员备注' }] }]"
+                  :autoSize="{ minRows: 4, maxRows: 8 }"
+                  v-decorator="[`${RECHARGE_TYPE_BALANCE}.remark`]"
                 />
               </a-form-item>
             </template>
@@ -70,8 +70,8 @@
               <a-form-item label="管理员备注" :labelCol="labelCol" :wrapperCol="wrapperCol">
                 <a-textarea
                   placeholder="请输入管理员备注"
-                  :rows="3"
-                  v-decorator="[`${RECHARGE_TYPE_POINTS}.remark`, { rules: [{ required: true, message: '请输入管理员备注' }] }]"
+                  :autoSize="{ minRows: 4, maxRows: 8 }"
+                  v-decorator="[`${RECHARGE_TYPE_POINTS}.remark`]"
                 />
               </a-form-item>
             </template>

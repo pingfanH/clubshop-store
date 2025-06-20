@@ -30,8 +30,8 @@
         <a-form-item label="管理员备注" :labelCol="labelCol" :wrapperCol="wrapperCol">
           <a-textarea
             placeholder="请输入管理员备注"
-            :rows="3"
-            v-decorator="['remark', { rules: [{ required: true, message: '请输入管理员备注' }] }]"
+            :autoSize="{ minRows: 4, maxRows: 8 }"
+            v-decorator="['remark']"
           />
         </a-form-item>
       </a-form>
