@@ -36,7 +36,9 @@
         :wrapStyle="{ position: 'absolute' }"
         @close="onCloseDrawer"
       >
-        <a-alert class="alert" v-if="curItem && curItem.alert" :message="curItem.alert" banner />
+        <a-alert class="alert" v-if="curItem && curItem.alert" banner>
+          <span slot="message" v-html="curItem.alert"></span>
+        </a-alert>
         <a-form v-if="drawer.visible" :form="form">
           <a-form-item
             v-for="(item, index) in curItem.form"

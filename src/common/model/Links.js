@@ -326,14 +326,14 @@ const other = {
       id: '4e99fde',
       title: 'H5外部链接',
       type: LINK_TYPE_URL,
-      alert: '仅支持在H5端和APP端跳转链接，不支持小程序端',
+      alert: '微信小程序端需配置业务域名才可以访问 <a href="https://developers.weixin.qq.com/miniprogram/dev/framework/ability/domain.html" target="_blank">查看文档</a>',
       param: { url: '' },
       form: [
         {
           key: 'url',
           lable: '链接地址',
           required: true,
-          tips: '请输入以https://或http://开头的链接'
+          tips: '请输入以 https:// 或 http:// 开头的链接'
         }
       ]
     },
