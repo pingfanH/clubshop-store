@@ -80,7 +80,7 @@ export default {
 @size: 60px;
 .goods-info {
   width: 270px;
-  // line-height: 1.3;
+  line-height: 1.3;
   white-space: normal;
   .in-left {
     float: left;

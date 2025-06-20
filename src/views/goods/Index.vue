@@ -78,6 +78,10 @@
       <span slot="goods_name" slot-scope="text">
         <p class="twoline-hide" style="width: 270px;">{{ text }}</p>
       </span>
+      <!-- 商品价格 -->
+      <span slot="goods_price_min" slot-scope="text">
+        <span class="c-p">¥{{ text }}</span>
+      </span>
       <!-- 商品状态 -->
       <span slot="status" slot-scope="text, item">
         <a-tag
