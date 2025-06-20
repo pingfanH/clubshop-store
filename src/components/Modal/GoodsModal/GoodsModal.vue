@@ -2,7 +2,7 @@
   <a-modal
     class="noborder"
     :title="title"
-    :width="820"
+    :width="960"
     :visible="visible"
     :isLoading="isLoading"
     :maskClosable="false"

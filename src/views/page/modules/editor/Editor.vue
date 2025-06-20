@@ -1232,7 +1232,7 @@
             <!-- 手动选择 -->
             <div v-if="curItem.params.source === 'choice'" class="block-box">
               <div class="block-title">选择优惠券 ({{ curItem.data.length }})</div>
-              <SCoupon v-model="curItem.data" :maxNum="15" />
+              <SCoupon v-model="curItem.data" />
             </div>
             <!-- 自动获取 -->
             <div v-if="curItem.params.source === 'auto'" class="block-box">

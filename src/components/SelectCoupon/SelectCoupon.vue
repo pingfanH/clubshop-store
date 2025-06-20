@@ -49,7 +49,6 @@
     <CouponModal
       ref="CouponModal"
       :multiple="multiple"
-      :maxNum="maxNum"
       :defaultList="selectedItems"
       @handleSubmit="handleSelectCouponSubmit"
     />
@@ -67,7 +66,7 @@ const columns = [
   {
     title: '优惠券ID',
     dataIndex: 'coupon_id',
-     width: '12%',
+    width: '12%',
   },
   {
     title: '优惠券名称',
@@ -105,8 +104,6 @@ export default {
   props: {
     // 多选模式, 如果false为单选
     multiple: PropTypes.bool.def(true),
-    // 最大选择的数量限制, multiple模式下有效
-    maxNum: PropTypes.integer.def(100),
     // 默认选中的优惠券
     defaultList: PropTypes.array.def([])
   },

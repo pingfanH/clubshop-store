@@ -56,9 +56,7 @@ export default {
     getCategoryList () {
       this.isLoading = true
       CategoryApi.list()
-        .then(result => {
-          this.categoryList = result.data.list
-        })
+        .then(result => this.categoryList = result.data.list)
         .finally(() => this.isLoading = false)
     },
 

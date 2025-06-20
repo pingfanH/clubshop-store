@@ -122,8 +122,8 @@ export default {
   props: {
     // 多选模式, 如果false为单选
     multiple: PropTypes.bool.def(true),
-    // 最大选择的数量限制, multiple模式下有效
-    maxNum: PropTypes.integer.def(100),
+    // // 最大选择的数量限制, multiple模式下有效
+    // maxNum: PropTypes.integer.def(100),
     // 默认选中的列表记录
     defaultList: PropTypes.array.def([])
   },

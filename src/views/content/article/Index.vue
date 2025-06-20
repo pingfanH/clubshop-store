@@ -138,24 +138,18 @@ export default {
   },
   data () {
     return {
-      expand: false,
+      // 正在加载
+      isLoading: false,
       // 当前表单元素
       searchForm: this.$form.createForm(this),
       // 分类列表
       categoryList: [],
       // 查询参数
       queryParam: {},
-      // 正在加载
-      isLoading: false,
       // 表头
       columns,
       // 加载数据方法 必须为 Promise 对象
-      loadData: param => {
-        return ArticleApi.list({ ...param, ...this.queryParam })
-          .then(response => {
-            return response.data.list
-          })
-      }
+      loadData: param => ArticleApi.list({ ...param, ...this.queryParam }).then(response => response.data.list)
     }
   },
   created () {
@@ -168,9 +162,7 @@ export default {
     getCategoryList () {
       this.isLoading = true
       CategoryApi.list()
-        .then(result => {
-          this.categoryList = result.data.list
-        })
+        .then(result => this.categoryList = result.data.list)
         .finally(() => this.isLoading = false)
     },
 

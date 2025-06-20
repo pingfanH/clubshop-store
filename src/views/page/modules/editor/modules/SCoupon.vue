@@ -24,7 +24,6 @@
     </div>
     <CouponModal
       ref="CouponModal"
-      :maxNum="maxNum"
       :defaultList="selectedItems"
       @handleSubmit="handleSelectCouponSubmit"
     />
@@ -52,8 +51,6 @@ export default {
     event: 'change'
   },
   props: {
-    // 最大选择的数量限制, multiple模式下有效
-    maxNum: PropTypes.integer.def(15),
     // 选中的优惠券数据
     value: PropTypes.array.def([])
   },
