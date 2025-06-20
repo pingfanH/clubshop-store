@@ -29,14 +29,14 @@
           :class="{ selected: index === selectedIndex, undrag: inArray(item.type, undragList) }"
           :style="renderItemStyle(item)"
         >
-          <!-- 轮播图 -->
+           <!-- 轮播图 -->
           <div
             v-if="item.type == 'banner'"
             class="diy-banner"
             :style="{ padding: `${item.style.paddingTop}px ${item.style.paddingLeft}px`, background: item.style.background }"
           >
             <div
-              class="item-image"
+              class="swiper-item"
               v-show="dataIdx <= 1"
               v-for="(dataItem, dataIdx) in item.data"
               :key="`${index}_${dataIdx}_img`"
@@ -45,7 +45,7 @@
               <img class="image" :src="dataItem.imgUrl" />
             </div>
             <div
-              class="dots"
+              class="indicator-dots"
               :class="item.style.btnShape"
               :style="{ '--padding-top': `${item.style.paddingTop}px` }"
             >
@@ -137,7 +137,7 @@
             class="diy-hotZone"
             :style="{ padding: `${item.style.paddingTop}px ${item.style.paddingLeft}px`, background: item.style.background }"
           >
-            <div class="item-image" :style="{ borderRadius: `${item.style.borderRadius}px` }">
+            <div class="bg-image" :style="{ borderRadius: `${item.style.borderRadius}px` }">
               <img class="image" :src="item.data.imgUrl" />
             </div>
           </div>

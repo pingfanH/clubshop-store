@@ -127,7 +127,7 @@ dl {
       height: auto;
       overflow: hidden;
 
-      .item-image {
+      .swiper-item {
         display: none;
         overflow: hidden;
 
@@ -135,35 +135,38 @@ dl {
         &:first-child {
           display: block;
         }
+
+        .image {
+          display: block;
+          width: 100%;
+        }
       }
 
-      .image {
-        display: block;
-        width: 100%;
-      }
-
-      .dots {
+      .indicator-dots {
         --padding-top: 0;
         height: 14px;
         padding: 0 10px;
         position: absolute;
         left: 0;
         right: 0;
-        bottom: 10px;
-        bottom: calc(var(--padding-top)  + 10px);
+        bottom: calc(var(--padding-top) + 10px);
         opacity: 0.8;
         display: flex;
         justify-content: center;
         align-items: center;
 
-
-        &-item {
+        .dots-item {
           margin-right: 4px;
-          height: 10px;
-          width: 10px;
+          height: 8px;
+          width: 8px;
+          background-color: #fff;
 
           &:last-child {
             margin-right: 0;
+          }
+
+          &.active {
+            background-color: #313131 !important;
           }
         }
 
@@ -175,15 +178,11 @@ dl {
         }
 
         &.square {
-          .dots-item {
-            // width: 10px;
-          }
+          .dots-item {}
         }
 
         &.round {
           .dots-item {
-            // height: 10px;
-            // width: 10px;
             border-radius: 10px;
           }
         }
@@ -468,23 +467,15 @@ dl {
 
     // 热区组
     .diy-hotZone {
-      display: block;
-      margin: 0;
-      padding: 0;
-      height: auto;
-      overflow: hidden;
 
-      .item-image {
+      .bg-image {
         overflow: hidden;
+        z-index: 1;
 
-        &:last-child {
-          margin-bottom: 0 !important;
+        .image {
+          display: block;
+          width: 100%;
         }
-      }
-
-      .image {
-        display: block;
-        width: 100%;
       }
     }
 
