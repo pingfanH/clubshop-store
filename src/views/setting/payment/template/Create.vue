@@ -89,6 +89,9 @@
               </a-radio>
               <a-radio value="provider">子商户 (服务商模式)</a-radio>
             </a-radio-group>
+            <div v-if="record.config.wechat.mchType == 'provider'" class="form-item-help">
+              <small class="c-red">注：子商户 (服务商模式) 不支持V3商家转账等接口</small>
+            </div>
           </a-form-model-item>
 
           <div
@@ -102,7 +105,7 @@
             >
               <a-input v-model="record.config.wechat.normal.appId" autocomplete="off" />
               <div class="form-item-help">
-                <small>微信小程序端支付填写小程序APPID，，需要在哪个客户端支付就填写哪个，APP支付需要填写开放平台的应用APPID</small>
+                <small>微信小程序端支付填写小程序APPID，APP支付需要填写开放平台的应用APPID</small>
               </div>
             </a-form-model-item>
 

@@ -88,6 +88,9 @@
               </a-radio>
               <a-radio value="provider">子商户 (服务商模式)</a-radio>
             </a-radio-group>
+            <div v-if="record.config.wechat.mchType == 'provider'" class="form-item-help">
+              <small class="c-red">注：子商户 (服务商模式) 不支持V3商家转账等接口</small>
+            </div>
           </a-form-model-item>
 
           <div
