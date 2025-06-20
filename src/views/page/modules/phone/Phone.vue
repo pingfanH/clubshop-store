@@ -30,15 +30,25 @@
           :style="renderItemStyle(item)"
         >
           <!-- 轮播图 -->
-          <div v-if="item.type == 'banner'" class="diy-banner">
-            <img
-              class="image"
+          <div
+            v-if="item.type == 'banner'"
+            class="diy-banner"
+            :style="{ padding: `${item.style.paddingTop}px ${item.style.paddingLeft}px`, background: item.style.background }"
+          >
+            <div
+              class="item-image"
+              v-show="dataIdx <= 1"
               v-for="(dataItem, dataIdx) in item.data"
               :key="`${index}_${dataIdx}_img`"
-              v-show="dataIdx <= 1"
-              :src="dataItem.imgUrl"
-            />
-            <div class="dots" :class="item.style.btnShape">
+              :style="{ borderRadius: `${item.style.borderRadius}px` }"
+            >
+              <img class="image" :src="dataItem.imgUrl" />
+            </div>
+            <div
+              class="dots"
+              :class="item.style.btnShape"
+              :style="{ '--padding-top': `${item.style.paddingTop}px` }"
+            >
               <div
                 v-for="(dataItem, dataIdx) in item.data"
                 :key="`${index}_${dataIdx}_dots`"
@@ -52,13 +62,13 @@
           <div
             v-else-if="item.type == 'image'"
             class="diy-image"
-            :style="{ paddingBottom: item.style.paddingTop + 'px', background: item.style.background }"
+            :style="{ padding: `${item.style.paddingTop}px ${item.style.paddingLeft}px`, background: item.style.background }"
           >
             <div
               class="item-image"
               v-for="(dataItm, dataIdx) in item.data"
               :key="`${index}_${dataIdx}`"
-              :style="{ padding: `${item.style.paddingTop}px ${item.style.paddingLeft}px 0` }"
+              :style="{ marginBottom: `${item.style.itemMargin}px`, borderRadius: `${item.style.borderRadius}px` }"
             >
               <img class="image" :src="dataItm.imgUrl" />
             </div>
@@ -125,12 +135,9 @@
           <div
             v-else-if="item.type == 'hotZone'"
             class="diy-hotZone"
-            :style="{ paddingBottom: item.style.paddingTop + 'px', background: item.style.background }"
+            :style="{ padding: `${item.style.paddingTop}px ${item.style.paddingLeft}px`, background: item.style.background }"
           >
-            <div
-              class="item-image"
-              :style="{ padding: `${item.style.paddingTop}px ${item.style.paddingLeft}px 0` }"
-            >
+            <div class="item-image" :style="{ borderRadius: `${item.style.borderRadius}px` }">
               <img class="image" :src="item.data.imgUrl" />
             </div>
           </div>

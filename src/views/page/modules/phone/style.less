@@ -127,9 +127,9 @@ dl {
       height: auto;
       overflow: hidden;
 
-      .image {
+      .item-image {
         display: none;
-        width: 100%;
+        overflow: hidden;
 
         // 后台仅显示第一个
         &:first-child {
@@ -137,20 +137,28 @@ dl {
         }
       }
 
+      .image {
+        display: block;
+        width: 100%;
+      }
+
       .dots {
+        --padding-top: 0;
         height: 14px;
         padding: 0 10px;
         position: absolute;
         left: 0;
         right: 0;
         bottom: 10px;
+        bottom: calc(var(--padding-top)  + 10px);
         opacity: 0.8;
         display: flex;
         justify-content: center;
+        align-items: center;
 
 
         &-item {
-          margin-right: 3px;
+          margin-right: 4px;
           height: 10px;
           width: 10px;
 
@@ -162,32 +170,41 @@ dl {
         &.rectangle {
           .dots-item {
             width: 16px;
+            height: 8px;
           }
         }
 
         &.square {
           .dots-item {
-            width: 10px;
+            // width: 10px;
           }
         }
 
         &.round {
           .dots-item {
-            height: 10px;
-            width: 10px;
+            // height: 10px;
+            // width: 10px;
             border-radius: 10px;
           }
         }
       }
     }
 
-    // diy-图片组
+    // 图片组
     .diy-image {
       display: block;
       margin: 0;
       padding: 0;
       height: auto;
       overflow: hidden;
+
+      .item-image {
+        overflow: hidden;
+
+        &:last-child {
+          margin-bottom: 0 !important;
+        }
+      }
 
       .image {
         display: block;
@@ -456,6 +473,14 @@ dl {
       padding: 0;
       height: auto;
       overflow: hidden;
+
+      .item-image {
+        overflow: hidden;
+
+        &:last-child {
+          margin-bottom: 0 !important;
+        }
+      }
 
       .image {
         display: block;

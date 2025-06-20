@@ -601,6 +601,29 @@
                 </div>
               </div>
             </div>
+            <div class="block-box">
+              <div class="block-title">内容样式</div>
+              <div class="block-item">
+                <span class="label">图片圆角</span>
+                <div class="item-slider">
+                  <a-slider v-model="curItem.style.borderRadius" :min="0" :max="30" />
+                  <span class="unit-text">
+                    <span>{{ curItem.style.borderRadius }}</span>
+                    <span>像素</span>
+                  </span>
+                </div>
+              </div>
+              <div class="block-item">
+                <span class="label">图片间距</span>
+                <div class="item-slider">
+                  <a-slider v-model="curItem.style.itemMargin" :min="0" :max="50" />
+                  <span class="unit-text">
+                    <span>{{ curItem.style.itemMargin }}</span>
+                    <span>像素</span>
+                  </span>
+                </div>
+              </div>
+            </div>
           </a-tab-pane>
         </a-tabs>
       </div>
@@ -646,6 +669,39 @@
           </a-tab-pane>
           <a-tab-pane key="2" tab="样式设置">
             <div class="block-box">
+              <div class="block-title">组件样式</div>
+              <div class="block-item">
+                <span class="label">上下边距</span>
+                <div class="item-slider">
+                  <a-slider v-model="curItem.style.paddingTop" :min="0" :max="50" />
+                  <span class="unit-text">
+                    <span>{{ curItem.style.paddingTop }}</span>
+                    <span>像素</span>
+                  </span>
+                </div>
+              </div>
+              <div class="block-item">
+                <span class="label">左右边距</span>
+                <div class="item-slider">
+                  <a-slider v-model="curItem.style.paddingLeft" :min="0" :max="50" />
+                  <span class="unit-text">
+                    <span>{{ curItem.style.paddingLeft }}</span>
+                    <span>像素</span>
+                  </span>
+                </div>
+              </div>
+              <div class="block-item">
+                <span class="label">背景颜色</span>
+                <div class="item-colorPicker">
+                  <span
+                    class="rest-color"
+                    @click="onEditorResetColor(curItem.style, 'background', '#fff')"
+                  >重置</span>
+                  <colorPicker v-model="curItem.style.background" defaultColor="#fff" />
+                </div>
+              </div>
+            </div>
+            <div class="block-box">
               <div class="block-title">内容样式</div>
               <div class="block-item">
                 <span class="label">指示点形状</span>
@@ -672,6 +728,19 @@
                   <span class="unit-text">
                     <span>{{ curItem.style.interval }}</span>
                     <span>秒</span>
+                  </span>
+                </div>
+              </div>
+            </div>
+            <div class="block-box">
+              <div class="block-title">图片样式</div>
+              <div class="block-item">
+                <span class="label">图片圆角</span>
+                <div class="item-slider">
+                  <a-slider v-model="curItem.style.borderRadius" :min="0" :max="30" />
+                  <span class="unit-text">
+                    <span>{{ curItem.style.borderRadius }}</span>
+                    <span>像素</span>
                   </span>
                 </div>
               </div>
@@ -916,7 +985,7 @@
                   <a-radio-button :value="5">5个</a-radio-button>
                 </a-radio-group>
               </div>
-               <div class="block-item">
+              <div class="block-item">
                 <span class="label">图片大小</span>
                 <div class="item-slider">
                   <a-slider v-model="curItem.style.imageSize" :min="30" :max="90" />
@@ -1054,7 +1123,6 @@
         <a-tabs>
           <a-tab-pane key="1" tab="内容设置">
             <div class="sub-title">实现点击图片不同位置，跳转不同的链接</div>
-
             <div class="block-box">
               <div class="block-title">
                 <span class="left">背景图片</span>
@@ -1111,6 +1179,19 @@
                     @click="onEditorResetColor(curItem.style, 'background', '#fff')"
                   >重置</span>
                   <colorPicker v-model="curItem.style.background" defaultColor="#fff" />
+                </div>
+              </div>
+            </div>
+            <div class="block-box">
+              <div class="block-title">内容样式</div>
+              <div class="block-item">
+                <span class="label">图片圆角</span>
+                <div class="item-slider">
+                  <a-slider v-model="curItem.style.borderRadius" :min="0" :max="30" />
+                  <span class="unit-text">
+                    <span>{{ curItem.style.borderRadius }}</span>
+                    <span>像素</span>
+                  </span>
                 </div>
               </div>
             </div>
