@@ -26,12 +26,28 @@ const basics = {
       }
     },
     {
-      id: 'c37c2ee',
+      id: '296fe6f',
       title: '分类页',
       type: LINK_TYPE_PAGE,
+
+      alert: '分类ID参数仅支持分类页 [分类+商品] 模版，用于选中指定的分类项',
       param: {
-        path: 'pages/category/index'
-      }
+        path: 'pages/category/index',
+        query: {}
+      },
+      form: [
+        {
+          key: 'query.categoryId1',
+          lable: '分类ID (一级)',
+          // required: true,
+          tips: '商品管理 -> 商品分类'
+        },
+        {
+          key: 'query.categoryId2',
+          lable: '分类ID (二级)',
+          tips: '商品管理 -> 商品分类'
+        }
+      ]
     },
     {
       id: 'bb2f7f1',
