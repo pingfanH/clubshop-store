@@ -1268,7 +1268,7 @@
                     class="rest-color"
                     @click="onEditorResetColor(curItem.style, 'background', '#fff')"
                   >重置</span>
-                  <colorPicker v-model="curItem.style.background" defaultColor="#fff" />
+                  <MyColorPicker v-model="curItem.style.background" defaultColor="#fff" />
                 </div>
               </div>
             </div>
@@ -1291,7 +1291,7 @@
                     class="rest-color"
                     @click="onEditorResetColor(curItem.style, 'couponBgColor', '#ffa708')"
                   >重置</span>
-                  <colorPicker v-model="curItem.style.couponBgColor" defaultColor="#ffa708" />
+                  <MyColorPicker v-model="curItem.style.couponBgColor" defaultColor="#ffa708" />
                 </div>
               </div>
               <div class="block-item">
@@ -1301,7 +1301,7 @@
                     class="rest-color"
                     @click="onEditorResetColor(curItem.style, 'couponTextColor', '#ffffff')"
                   >重置</span>
-                  <colorPicker v-model="curItem.style.couponTextColor" defaultColor="#ffffff" />
+                  <MyColorPicker v-model="curItem.style.couponTextColor" defaultColor="#ffffff" />
                 </div>
               </div>
               <div class="block-item">
@@ -1311,7 +1311,7 @@
                     class="rest-color"
                     @click="onEditorResetColor(curItem.style, 'receiveBgColor', '#717070')"
                   >重置</span>
-                  <colorPicker v-model="curItem.style.receiveBgColor" defaultColor="#717070" />
+                  <MyColorPicker v-model="curItem.style.receiveBgColor" defaultColor="#717070" />
                 </div>
               </div>
               <div class="block-item">
@@ -1321,7 +1321,7 @@
                     class="rest-color"
                     @click="onEditorResetColor(curItem.style, 'receiveTextColor', '#ffffff')"
                   >重置</span>
-                  <colorPicker v-model="curItem.style.receiveTextColor" defaultColor="#ffffff" />
+                  <MyColorPicker v-model="curItem.style.receiveTextColor" defaultColor="#ffffff" />
                 </div>
               </div>
             </div>
@@ -1643,14 +1643,11 @@
 
 <script>
 import Vue from 'vue'
-import vcolorpicker from 'vcolorpicker'
 import PropTypes from 'ant-design-vue/es/_util/vue-types'
 import draggable from 'vuedraggable'
 import { inArray } from '@/utils/util'
 import { Ueditor, SelectCategory } from '@/components'
 import { SImage, SArticleCate, SGoods, SLink, SHotZone, SCoupon } from './modules'
-
-Vue.use(vcolorpicker)
 
 export default {
   props: {

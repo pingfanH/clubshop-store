@@ -61,6 +61,7 @@ import Tree from '@/components/tree'
 // ext library
 import VueClipboard from 'vue-clipboard2'
 import Dialog from '@/components/Dialog'
+import MyColorPicker from '@/components/MyColorPicker'
 // import MultiTab from '@/components/MultiTab'
 import PageLoading from '@/components/PageLoading'
 import PermissionHelper from '@/utils/helper/permission'
@@ -129,6 +130,7 @@ Vue.use(Dialog) // this.$dialog func
 Vue.use(PageLoading)
 Vue.use(PermissionHelper)
 Vue.use(VueClipboard)
+Vue.use(MyColorPicker)
 
 Vue.use(Pagination)
 Vue.use(Empty)

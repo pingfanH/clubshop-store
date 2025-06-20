@@ -35,9 +35,9 @@
                 </a-radio-group>
               </a-form-model-item>
               <a-form-model-item label="主背景">
-                <div class="color-picker">
-                  <colorPicker v-model="record.data.mainBg" defaultColor="#fff" />
-                  <colorPicker
+                <div class="color-picker-row">
+                  <MyColorPicker v-model="record.data.mainBg" defaultColor="#fff" />
+                  <MyColorPicker
                     v-if="record.data.gradualChange"
                     v-model="record.data.mainBg2"
                     defaultColor="#fff"
@@ -45,14 +45,14 @@
                 </div>
               </a-form-model-item>
               <a-form-model-item label="主文字">
-                <div class="color-picker">
-                  <colorPicker v-model="record.data.mainText" defaultColor="#fff" />
+                <div class="color-picker-row">
+                  <MyColorPicker v-model="record.data.mainText" defaultColor="#fff" />
                 </div>
               </a-form-model-item>
               <a-form-model-item label="副背景">
-                <div class="color-picker">
-                  <colorPicker v-model="record.data.viceBg" defaultColor="#fff" />
-                  <colorPicker
+                <div class="color-picker-row">
+                  <MyColorPicker v-model="record.data.viceBg" defaultColor="#fff" />
+                  <MyColorPicker
                     v-if="record.data.gradualChange"
                     v-model="record.data.viceBg2"
                     defaultColor="#fff"
@@ -60,8 +60,8 @@
                 </div>
               </a-form-model-item>
               <a-form-model-item label="副文字">
-                <div class="color-picker">
-                  <colorPicker v-model="record.data.viceText" defaultColor="#fff" />
+                <div class="color-picker-row">
+                  <MyColorPicker v-model="record.data.viceText" defaultColor="#fff" />
                 </div>
               </a-form-model-item>
             </div>
@@ -133,13 +133,10 @@
 
 <script>
 import Vue from 'vue'
-import vcolorpicker from 'vcolorpicker'
 import { cloneDeep } from 'lodash'
 import * as Api from '@/api/setting/store'
 import { SettingEnum } from '@/common/enum/store'
 import { ColorRadio } from './modules'
-
-Vue.use(vcolorpicker)
 
 // 默认数据
 const defaultData = {
@@ -540,30 +537,12 @@ export default {
 }
 
 // 颜色选择组件
-.color-picker {
-  // height: 39.9999px;
+.color-picker-row {
+  margin-top: 5px;
   display: flex;
   align-items: center;
-  margin: 0;
-  .m-colorPicker {
-    display: block;
-    background-color: #ffffff;
-    border: 1px solid #d9d9d9;
-    padding: 6px 5px;
-    width: 66px;
-    margin-right: 15px;
-
-    /deep/.colorBtn {
-      cursor: pointer;
-      width: 53px;
-      height: 20px;
-      border: 1px solid #000;
-    }
-
-    /deep/.box {
-      left: -152px;
-      top: 35px;
-    }
+  .color-picker {
+    margin-right: 10px;
   }
 }
 </style>
