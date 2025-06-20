@@ -71,9 +71,7 @@ export default {
       // 标签布局属性
       labelCol: { span: 7 },
       // 输入框布局属性
-      wrapperCol: {
-        span: 13
-      },
+      wrapperCol: { span: 13 },
       // modal(对话框)是否可见
       visible: false,
       // modal(对话框)确定按钮 loading
@@ -153,9 +151,7 @@ export default {
           // 通知父端组件提交完成了
           this.$emit('handleSubmit', values)
         })
-        .finally(result => {
-          this.confirmLoading = false
-        })
+        .finally(result => this.confirmLoading = false)
     }
   }
 }
