@@ -36,50 +36,32 @@
               </a-form-model-item>
               <a-form-model-item label="主背景">
                 <div class="color-picker-row">
-                  <MyColorPicker
-                    v-model="record.data.mainBg"
-                    defaultColor="#fff"
-                    horizontal="left"
-                  />
+                  <MyColorPicker v-model="record.data.mainBg" horizontal="left" />
                   <MyColorPicker
                     v-if="record.data.gradualChange"
                     v-model="record.data.mainBg2"
-                    defaultColor="#fff"
                     horizontal="left"
                   />
                 </div>
               </a-form-model-item>
               <a-form-model-item label="主文字">
                 <div class="color-picker-row">
-                  <MyColorPicker
-                    v-model="record.data.mainText"
-                    defaultColor="#fff"
-                    horizontal="left"
-                  />
+                  <MyColorPicker v-model="record.data.mainText" horizontal="left" />
                 </div>
               </a-form-model-item>
               <a-form-model-item label="副背景">
                 <div class="color-picker-row">
-                  <MyColorPicker
-                    v-model="record.data.viceBg"
-                    defaultColor="#fff"
-                    horizontal="left"
-                  />
+                  <MyColorPicker v-model="record.data.viceBg" horizontal="left" />
                   <MyColorPicker
                     v-if="record.data.gradualChange"
                     v-model="record.data.viceBg2"
-                    defaultColor="#fff"
                     horizontal="left"
                   />
                 </div>
               </a-form-model-item>
               <a-form-model-item label="副文字">
                 <div class="color-picker-row">
-                  <MyColorPicker
-                    v-model="record.data.viceText"
-                    defaultColor="#fff"
-                    horizontal="left"
-                  />
+                  <MyColorPicker v-model="record.data.viceText" horizontal="left" />
                 </div>
               </a-form-model-item>
             </div>
