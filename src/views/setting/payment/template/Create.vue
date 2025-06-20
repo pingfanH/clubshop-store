@@ -102,7 +102,7 @@
             >
               <a-input v-model="record.config.wechat.normal.appId" autocomplete="off" />
               <div class="form-item-help">
-                <small>微信小程序端支付填写小程序APPID，APP支付需要填写开放平台的应用APPID</small>
+                <small>微信小程序端支付填写小程序APPID，，需要在哪个客户端支付就填写哪个，APP支付需要填写开放平台的应用APPID</small>
               </div>
             </a-form-model-item>
 
@@ -128,7 +128,7 @@
                 autocomplete="off"
               />
               <div class="form-item-help">
-                <small>"微信支付商户平台"" - "账户中心" - "API安全" - "设置API密钥"</small>
+                <small>"微信支付商户平台" - "账户中心" - "API安全" - "设置API密钥"</small>
               </div>
             </a-form-model-item>
 
@@ -149,7 +149,7 @@
                   <a-radio value="platformCert">平台证书</a-radio>
                 </a-radio-group>
                 <div class="form-item-help">
-                  <small>微信官方已不再支持平台证书方式，强烈建议升级到微信支付公钥</small>
+                  <small>"微信支付商户平台" - "账户中心" - "API安全" - "验证微信支付身份"</small>
                 </div>
               </a-form-model-item>
 
@@ -293,7 +293,7 @@
                   <a-radio value="platformCert">平台证书</a-radio>
                 </a-radio-group>
                 <div class="form-item-help">
-                  <small>微信官方已不再支持平台证书方式，强烈建议升级到微信支付公钥</small>
+                  <small>"微信支付商户平台" - "账户中心" - "API安全" - "验证微信支付身份"</small>
                 </div>
               </a-form-model-item>
 

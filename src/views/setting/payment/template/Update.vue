@@ -127,7 +127,7 @@
                 autocomplete="off"
               />
               <div class="form-item-help">
-                <small>"微信支付商户平台"" - "账户中心" - "API安全" - "设置API密钥"</small>
+                <small>"微信支付商户平台" - "账户中心" - "API安全" - "设置API密钥"</small>
               </div>
             </a-form-model-item>
 
@@ -148,7 +148,7 @@
                   <a-radio value="platformCert">平台证书</a-radio>
                 </a-radio-group>
                 <div class="form-item-help">
-                  <small>微信官方已不再支持平台证书方式，强烈建议升级到微信支付公钥</small>
+                  <small>"微信支付商户平台" - "账户中心" - "API安全" - "验证微信支付身份"</small>
                 </div>
               </a-form-model-item>
 
@@ -292,7 +292,7 @@
                   <a-radio value="platformCert">平台证书</a-radio>
                 </a-radio-group>
                 <div class="form-item-help">
-                  <small>微信官方已不再支持平台证书方式，强烈建议升级到微信支付公钥</small>
+                  <small>"微信支付商户平台" - "账户中心" - "API安全" - "验证微信支付身份"</small>
                 </div>
               </a-form-model-item>
 
