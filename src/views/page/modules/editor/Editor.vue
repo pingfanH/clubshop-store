@@ -88,9 +88,9 @@
               <div class="block-item">
                 <span class="label">搜索框样式</span>
                 <a-radio-group buttonStyle="solid" v-model="curItem.style.searchStyle">
-                  <a-radio-button value="square">方形</a-radio-button>
-                  <a-radio-button value="radius">圆角</a-radio-button>
                   <a-radio-button value="round">圆弧</a-radio-button>
+                  <a-radio-button value="radius">圆角</a-radio-button>
+                  <a-radio-button value="square">方形</a-radio-button>
                 </a-radio-group>
               </div>
               <div class="block-item">
@@ -100,6 +100,59 @@
                   <a-radio-button value="center">居中</a-radio-button>
                   <a-radio-button value="right">居右</a-radio-button>
                 </a-radio-group>
+              </div>
+              <div class="block-item">
+                <span class="label">搜索框颜色</span>
+                <div class="item-colorPicker">
+                  <span
+                    class="rest-color"
+                    @click="onEditorResetColor(curItem.style, 'searchBg', '#fff')"
+                  >重置</span>
+                  <colorPicker v-model="curItem.style.searchBg" defaultColor="#fff" />
+                </div>
+              </div>
+              <div class="block-item">
+                <span class="label">文字颜色</span>
+                <div class="item-colorPicker">
+                  <span
+                    class="rest-color"
+                    @click="onEditorResetColor(curItem.style, 'searchFontColor', '#999999')"
+                  >重置</span>
+                  <colorPicker v-model="curItem.style.searchFontColor" defaultColor="#999999" />
+                </div>
+              </div>
+            </div>
+            <div class="block-box">
+              <div class="block-title">组件样式</div>
+              <div class="block-item">
+                <span class="label">背景颜色</span>
+                <div class="item-colorPicker">
+                  <span
+                    class="rest-color"
+                    @click="onEditorResetColor(curItem.style, 'background', '#f1f1f2')"
+                  >重置</span>
+                  <colorPicker v-model="curItem.style.background" defaultColor="#f1f1f2" />
+                </div>
+              </div>
+              <div class="block-item">
+                <span class="label">上下边距</span>
+                <div class="item-slider">
+                  <a-slider v-model="curItem.style.paddingY" :min="0" :max="50" />
+                  <span class="unit-text">
+                    <span>{{ curItem.style.paddingY }}</span>
+                    <span>像素</span>
+                  </span>
+                </div>
+              </div>
+              <div class="block-item">
+                <span class="label">左右边距</span>
+                <div class="item-slider">
+                  <a-slider v-model="curItem.style.paddingX" :min="0" :max="50" />
+                  <span class="unit-text">
+                    <span>{{ curItem.style.paddingX }}</span>
+                    <span>像素</span>
+                  </span>
+                </div>
               </div>
             </div>
           </a-tab-pane>
@@ -258,6 +311,16 @@
           <a-tab-pane key="2" tab="样式设置">
             <div class="block-box">
               <div class="block-title">内容样式</div>
+              <div class="block-item">
+                <span class="label">文字大小</span>
+                <div class="item-slider">
+                  <a-slider v-model="curItem.style.fontSize" :min="10" :max="18" />
+                  <span class="unit-text">
+                    <span>{{ curItem.style.fontSize }}</span>
+                    <span>像素</span>
+                  </span>
+                </div>
+              </div>
               <div class="block-item">
                 <span class="label">文字颜色</span>
                 <div class="item-colorPicker">
@@ -438,6 +501,26 @@
                     <span>{{ curItem.style.paddingTop }}</span>
                     <span>像素</span>
                   </span>
+                </div>
+              </div>
+              <div class="block-item">
+                <span class="label">左右边距</span>
+                <div class="item-slider">
+                  <a-slider v-model="curItem.style.paddingLeft" :min="0" :max="50" />
+                  <span class="unit-text">
+                    <span>{{ curItem.style.paddingLeft }}</span>
+                    <span>像素</span>
+                  </span>
+                </div>
+              </div>
+              <div class="block-item">
+                <span class="label">背景颜色</span>
+                <div class="item-colorPicker">
+                  <span
+                    class="rest-color"
+                    @click="onEditorResetColor(curItem.style, 'background', '#ffffff')"
+                  >重置</span>
+                  <colorPicker v-model="curItem.style.background" defaultColor="#ffffff" />
                 </div>
               </div>
             </div>
@@ -832,6 +915,16 @@
                   <a-radio-button :value="4">4个</a-radio-button>
                   <a-radio-button :value="5">5个</a-radio-button>
                 </a-radio-group>
+              </div>
+               <div class="block-item">
+                <span class="label">图片大小</span>
+                <div class="item-slider">
+                  <a-slider v-model="curItem.style.imageSize" :min="30" :max="90" />
+                  <span class="unit-text">
+                    <span>{{ curItem.style.imageSize }}</span>
+                    <span>像素</span>
+                  </span>
+                </div>
               </div>
               <div class="block-item">
                 <span class="label">文字颜色</span>

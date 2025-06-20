@@ -139,7 +139,7 @@
           <div
             v-else-if="item.type == 'video'"
             class="diy-video"
-            :style="{ padding: `${item.style.paddingTop}px 0` }"
+            :style="{ padding: `${item.style.paddingTop}px ${item.style.paddingLeft}px`, background: item.style.background }"
           >
             <video
               :style="{ height: `${item.style.height}px` }"
@@ -191,9 +191,13 @@
             v-else-if="item.type == 'search'"
             class="diy-search"
             :class="{ sticky: item.params.sticky }"
+            :style="{ background: item.style.background, padding: `${item.style.paddingY}px ${item.style.paddingX}px` }"
           >
             <div class="inner" :class="item.style.searchStyle">
-              <div class="search-input" :style="{ textAlign: item.style.textAlign }">
+              <div
+                class="search-input"
+                :style="{ textAlign: item.style.textAlign, background: item.style.searchBg, color: item.style.searchFontColor }"
+              >
                 <a-icon class="search-icon" :component="PageIcon.search" />
                 <span>{{ item.params.placeholder }}</span>
               </div>
@@ -213,7 +217,10 @@
               <div class="notice__icon">
                 <a-icon class="notice-icon" :component="PageIcon.volumeFill" />
               </div>
-              <div class="notice__text flex-box oneline-hide">
+              <div
+                class="notice__text flex-box oneline-hide"
+                :style="{ fontSize: `${item.style.fontSize}px` }"
+              >
                 <span>{{ item.params.text }}</span>
               </div>
             </div>
@@ -225,18 +232,22 @@
             class="diy-navBar"
             :style="{ padding: `${item.style.paddingTop}px 0`, background: item.style.background, color: item.style.textColor }"
           >
-            <ul class="data-list clearfix" :class="`avg-sm-${item.style.rowsNum}`">
-              <li
+            <div class="data-list clearfix" :class="`avg-sm-${item.style.rowsNum}`">
+              <div
                 class="item-nav"
                 v-for="(dataItm, dataIdx) in item.data"
                 :key="`${index}_${dataIdx}`"
               >
                 <div class="item-image">
-                  <img class="image" :src="dataItm.imgUrl" />
+                  <img
+                    class="image"
+                    :style="{ width: `${item.style.imageSize}px`, height: `${item.style.imageSize}px` }"
+                    :src="dataItm.imgUrl"
+                  />
                 </div>
                 <p class="item-text oneline-hide">{{ dataItm.text }}</p>
-              </li>
-            </ul>
+              </div>
+            </div>
           </div>
 
           <!-- 商品组 -->
