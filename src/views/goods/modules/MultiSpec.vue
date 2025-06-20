@@ -158,7 +158,6 @@ export default {
       wrapperCol: { span: 21 },
       // 商品多规格模型
       MultiSpecModel: new MultiSpecModel(),
-      // MultiSpecModel: Object,
       multiSpecData: {
         // 规格列表
         specList: [],
@@ -387,7 +386,9 @@ export default {
 
 // sku列表
 .sku-list {
-  width: 895px;
+  min-width: 895px;
+  max-width: 1200px;
+
   /deep/.ant-table-thead > tr > th,
   /deep/.ant-table-tbody > tr > td {
     white-space: nowrap;
