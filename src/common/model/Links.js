@@ -155,6 +155,14 @@ const personal = {
       }
     },
     {
+      id: 'aaac87',
+      title: '个人信息',
+      type: LINK_TYPE_PAGE,
+      param: {
+        path: 'pages/user/personal/index'
+      }
+    },
+    {
       id: '792db19',
       title: '充值中心页',
       type: LINK_TYPE_PAGE,
@@ -174,7 +182,7 @@ const personal = {
     },
     {
       id: '569b0b0',
-      title: '会员积分明细',
+      title: '积分明细',
       type: LINK_TYPE_PAGE,
       moduleKey: 'market-points',
       param: {
@@ -187,6 +195,14 @@ const personal = {
       type: LINK_TYPE_PAGE,
       param: {
         path: 'pages/address/index'
+      }
+    },
+    {
+      id: '715d4ed',
+      title: '订单中心',
+      type: LINK_TYPE_PAGE,
+      param: {
+        path: 'pages/order/center'
       }
     },
     {
