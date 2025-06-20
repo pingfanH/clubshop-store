@@ -28,10 +28,12 @@ Vue.component('page-header-wrapper', PageHeaderWrapper)
 window.umi_plugin_ant_themeVar = themePluginConfig.theme
 
 
-new Vue({
+const vue = new Vue({
   router,
   store,
   i18n,
   created: bootstrap,
   render: h => h(App)
 }).$mount('#app')
+
+export default vue

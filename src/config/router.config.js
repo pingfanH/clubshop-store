@@ -677,14 +677,14 @@ export const constantRouterMap = [
 
   // 用户登录页
   {
+    name: 'login',
     path: '/passport',
     component: UserLayout,
     redirect: '/passport/login',
     hidden: true,
     children: [
       {
-        path: 'login',
-        name: 'login',
+        path: '/passport/login',
         component: () => import(/* webpackChunkName: "passport" */ '@/views/passport/Login')
       }
     ]

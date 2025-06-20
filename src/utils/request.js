@@ -6,6 +6,7 @@ import message from 'ant-design-vue/es/message'
 import { VueAxios } from './axios'
 import { isObject } from './util'
 import { ACCESS_TOKEN } from '@/store/mutation-types'
+// import Vue from '../main'
 
 // 站点配置文件
 // window.publicConfig => public/config.js
@@ -32,9 +33,6 @@ service.interceptors.request.use(config => {
   return config
 })
 
-// 是否显示未登录提示
-let notLoggedMessage = false
-
 // 接口响应拦截
 service.interceptors.response.use((response) => {
   const result = response.data
@@ -50,18 +48,16 @@ service.interceptors.response.use((response) => {
   }
   // 鉴权失败: 未登录
   if (result.status === 401) {
-    if (!notLoggedMessage) {
-      notLoggedMessage = true
-      store.dispatch('Logout').then(() => {
-        notification.error({
-          key: 'notLoggedMessage',
-          message: '错误',
-          description: result.message,
-          duration: 3
-        })
-        setTimeout(() => window.location.reload(), 1500)
+    store.dispatch('Logout').then(() => {
+      notification.error({
+        key: 'notLoggedMessage',
+        message: '错误',
+        description: result.message,
+        duration: 3
       })
-    }
+      // Vue.$router.push({ path: '/passport/login' }) // 会报错重复注册路由, 改用下面reload的方式
+      setTimeout(() => window.location.reload(), 1500)
+    })
     return Promise.reject(result)
   }
   return result
