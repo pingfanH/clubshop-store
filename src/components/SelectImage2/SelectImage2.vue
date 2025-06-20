@@ -122,8 +122,9 @@ export default {
     }
 
     .uodate-repalce {
-      width: 60px;
-      height: 30px;
+      width: 55px;
+      height: 25px;
+      line-height: 25px;
       font-size: 12px;
       text-align: center;
       position: absolute;
@@ -138,7 +139,6 @@ export default {
       border-radius: 4px;
       font-weight: 600;
       color: #595961;
-      line-height: 30px;
     }
 
     &:hover {

@@ -29,7 +29,7 @@
           :class="{ selected: index === selectedIndex, undrag: inArray(item.type, undragList) }"
           :style="renderItemStyle(item)"
         >
-           <!-- 轮播图 -->
+          <!-- 轮播图 -->
           <div
             v-if="item.type == 'banner'"
             class="diy-banner"
@@ -265,7 +265,8 @@
           >
             <div
               class="goods-list"
-              :class="[`display-${item.style.display}`, `column-${item.style.column}`  ]"
+              :class="[`display-${item.style.display}`, `column-${item.style.column}` ]"
+              :style="{ marginBottom: `-${item.style.itemMargin}px` }"
             >
               <div
                 class="goods-item"

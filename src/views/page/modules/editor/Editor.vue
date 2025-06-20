@@ -248,7 +248,7 @@
             <div class="block-box">
               <div class="block-title">文本内容</div>
               <div class="ueditor">
-                <Ueditor v-model="curItem.params.content" :config="{ initialFrameWidth: 375  }" />
+                <Ueditor v-model="curItem.params.content" :config="{ initialFrameWidth: 375 }" />
               </div>
             </div>
           </a-tab-pane>
