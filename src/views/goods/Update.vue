@@ -379,10 +379,10 @@
                   </a-form-item>
                 </div>
                 <div class="form-item-help">
-                  <p
-                    class="extra"
-                    v-if="form.getFieldValue('is_alone_grade')"
-                  >单独折扣：折扣率范围0.0-9.9，例如: 9.8代表98折，0代表不折扣</p>
+                  <p class="extra" v-if="form.getFieldValue('is_alone_grade')">
+                    <span v-if="formData.userGradeList.length">单独折扣：折扣率范围0.0-9.9，例如: 9.8代表98折，0代表不折扣</span>
+                    <span v-else class="c-red">当前没有会员等级，请先到 [会员管理] - [会员等级] 中设置</span>
+                  </p>
                   <p class="extra" v-else>默认折扣：默认为用户所属会员等级的折扣率</p>
                 </div>
               </a-form-item>
