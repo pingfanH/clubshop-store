@@ -43,6 +43,13 @@
       <span slot="scene" slot-scope="text">
         <a-tag>{{ SceneEnum[text].name }}</a-tag>
       </span>
+      <!-- 管理员备注 -->
+      <span slot="remark" slot-scope="text">
+        <a-tooltip>
+          <template v-if="text" slot="title">{{ text ? text : '--' }}</template>
+          <p class="twoline-hide" style="width: 150px;">{{ text ? text : '--' }}</p>
+        </a-tooltip>
+      </span>
     </s-table>
   </a-card>
 </template>
@@ -94,7 +101,8 @@ export default {
         },
         {
           title: '管理员备注',
-          dataIndex: 'remark'
+          dataIndex: 'remark',
+          scopedSlots: { customRender: 'remark' }
         },
         {
           title: '变动时间',

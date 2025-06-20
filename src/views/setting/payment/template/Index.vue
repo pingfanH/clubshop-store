@@ -26,7 +26,12 @@
         <a-tag>{{ PaymentMethodEnum[text].name }}</a-tag>
       </span>
       <!-- 备注信息 -->
-      <span slot="remarks" slot-scope="text">{{ text ? text : '--' }}</span>
+      <span slot="remarks" slot-scope="text">
+        <a-tooltip>
+          <template v-if="text" slot="title">{{ text ? text : '--' }}</template>
+          <p class="twoline-hide" style="width: 150px;">{{ text ? text : '--' }}</p>
+        </a-tooltip>
+      </span>
       <!-- 操作 -->
       <div class="actions" slot="action" slot-scope="text, item">
         <a v-if="$auth('/setting/payment/template/update')" @click="handleEdit(item)">编辑</a>
