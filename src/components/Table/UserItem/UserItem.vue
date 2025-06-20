@@ -50,7 +50,7 @@ export default {
 .user-info {
   width: 160px;
   height: 40px;
-  // line-height: 1.3;
+  line-height: 1.3;
 
   .in-left {
     float: left;
