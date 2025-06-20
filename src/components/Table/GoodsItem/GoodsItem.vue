@@ -6,7 +6,11 @@
     </div>
     <div class="in-right">
       <!-- 商品名称 -->
-      <p class="title twoline-hide" :style="{ width: `${dataObj.titleWidth}px` }">{{ dataObj.title }}</p>
+      <p
+        class="title twoline-hide"
+        :style="{ width: `${dataObj.titleWidth}px` }"
+        :title="dataObj.title"
+      >{{ dataObj.title }}</p>
       <!-- 副标题 -->
       <p
         v-if="isEmpty(dataObj.goodsProps)"
@@ -14,7 +18,12 @@
         :class="{ 'c-p': subTitleColor }"
       >{{ dataObj.subtitle }}</p>
       <!-- 商品规格 -->
-      <div v-else class="goods-props clearfix">
+      <div
+        v-else
+        class="goods-props clearfix"
+        :style="{ width: `${dataObj.titleWidth}px` }"
+        :title="goodsPropsText"
+      >
         <div class="goods-props-item" v-for="(props, idx) in dataObj.goodsProps" :key="idx">
           <span>{{ props.value.name }}</span>
         </div>
@@ -46,6 +55,14 @@ export default {
         goodsProps: [],
         titleWidth: 200
       }, this.$props.data)
+    },
+    // 商品规格文字 (用于完整显示)
+    goodsPropsText () {
+      const { dataObj } = this
+      if (isEmpty(dataObj.goodsProps)) {
+        return ''
+      }
+      return dataObj.goodsProps.map(props => props.value.name).join('       ')
     }
   },
   data () {
@@ -63,7 +80,7 @@ export default {
 @size: 60px;
 .goods-info {
   width: 270px;
-  line-height: 1.3;
+  // line-height: 1.3;
   white-space: normal;
   .in-left {
     float: left;
@@ -95,6 +112,7 @@ export default {
     color: #8a8a8a;
     font-size: 12px;
     overflow: hidden;
+    height: 16px;
 
     &-item {
       display: inline-block;
