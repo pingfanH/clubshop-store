@@ -296,7 +296,7 @@ export const asyncRouterMap = [
               {
                 path: '/user/recharge/index',
                 component: () => import(/* webpackChunkName: "content" */ '@/views/user/recharge/Index'),
-                meta: { title: '充值记录', keepAlive: false, permission: ['/user/recharge/index'] }
+                meta: { title: '充值订单', keepAlive: false, permission: ['/user/recharge/index'] }
               },
               {
                 path: '/user/balance/index',

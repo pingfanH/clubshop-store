@@ -85,7 +85,7 @@
             <a-radio-group v-decorator="['isForceBindMpweixin', { rules: [{ required: true }] }]">
               <a-radio :value="1">
                 <span>强制绑定</span>
-                <a-tag class="ml-5" color="green">推荐</a-tag>
+                <!-- <a-tag class="ml-5" color="green">推荐</a-tag> -->
               </a-radio>
               <a-radio :value="0">不绑定</a-radio>
             </a-radio-group>
@@ -94,7 +94,7 @@
               <p
                 v-show="form.getFieldValue('isForceBindMpweixin') == 0"
                 class="extra c-red"
-              >如果不强制绑定手机号，会造成多端情况下同一个用户注册多个账户，强烈推荐绑定手机号</p>
+              >如果不强制绑定手机号，会造成多端情况下同一个用户注册多个账户</p>
             </div>
           </a-form-item>
 
@@ -128,8 +128,11 @@
                 </a-popover>
               </p>
               <p v-show="form.getFieldValue('isOauthMobileMpweixin') == 1" class="extra c-red">
-                <span>微信官方将于2023年8月26日起对该接口功能收费，每次成功调用收费0.03元；详情 </span>
-                <a href="https://developers.weixin.qq.com/miniprogram/dev/framework/open-ability/getPhoneNumber.html" target="_blank">查看文档</a>
+                <span>微信官方将于2023年8月26日起对该接口功能收费，每次成功调用收费0.03元；详情</span>
+                <a
+                  href="https://developers.weixin.qq.com/miniprogram/dev/framework/open-ability/getPhoneNumber.html"
+                  target="_blank"
+                >查看文档</a>
               </p>
             </div>
           </a-form-item>

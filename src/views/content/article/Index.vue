@@ -33,7 +33,7 @@
       <!-- 操作板块 -->
       <div class="row-item-tab clearfix">
         <a-button
-          v-if="$auth('/market/coupon/create')"
+          v-if="$auth('/content/article/create')"
           type="primary"
           icon="plus"
           @click="handleAdd()"
@@ -67,7 +67,7 @@
       </span>
       <!-- 操作项 -->
       <span class="actions" slot="action" slot-scope="text, item">
-        <a v-if="$auth('/market/coupon/update')" @click="handleEdit(item)">编辑</a>
+        <a v-if="$auth('/content/article/update')" @click="handleEdit(item)">编辑</a>
         <a v-action:delete @click="handleDelete(item)">删除</a>
       </span>
     </s-table>
