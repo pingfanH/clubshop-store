@@ -60,7 +60,7 @@
         <p class="twoline-hide" style="width: 270px;">{{ text }}</p>
       </span>
       <!-- 所属分类 -->
-      <span slot="category" slot-scope="text">{{ text.name }}</span>
+      <span slot="category" slot-scope="text">{{ text ? text.name : '--' }}</span>
       <!-- 状态 -->
       <span slot="status" slot-scope="text">
         <a-tag :color="text ? 'green' : ''">{{ text ? '显示' : '隐藏' }}</a-tag>

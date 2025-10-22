@@ -136,7 +136,6 @@ import Vue from 'vue'
 import { cloneDeep } from 'lodash'
 import * as Api from '@/api/setting/store'
 import { SettingEnum } from '@/common/enum/store'
-import { ColorRadio } from './modules'
 
 // 默认数据
 const defaultData = {
@@ -244,9 +243,7 @@ const formatToLine = value => {
 }
 
 export default {
-  components: {
-    ColorRadio
-  },
+  components: {},
   data () {
     return {
       // 当前设置项的key
