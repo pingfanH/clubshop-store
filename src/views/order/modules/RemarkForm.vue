@@ -17,7 +17,10 @@
           :wrapperCol="wrapperCol"
           extra="商家备注内容仅后台可见，用户端不可见"
         >
-          <a-input v-decorator="['content']" />
+          <a-textarea
+            v-decorator="['content', { rules: [{ required: true, message: '请输入备注内容' }] }]"
+            :auto-size="{ minRows: 4, maxRows: 10 }"
+          />
         </a-form-item>
       </a-form>
     </a-spin>
