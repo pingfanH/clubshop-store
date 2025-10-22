@@ -32,7 +32,12 @@
       </a-row>
       <!-- 操作板块 -->
       <div class="row-item-tab clearfix">
-        <a-button v-action:add type="primary" icon="plus" @click="handleAdd">新增</a-button>
+        <a-button
+          v-if="$auth('/market/coupon/create')"
+          type="primary"
+          icon="plus"
+          @click="handleAdd()"
+        >新增</a-button>
       </div>
     </div>
     <s-table
@@ -61,8 +66,8 @@
         <a-tag :color="text ? 'green' : ''">{{ text ? '显示' : '隐藏' }}</a-tag>
       </span>
       <!-- 操作项 -->
-      <span slot="action" slot-scope="text, item">
-        <a v-action:edit style="margin-right: 8px;" @click="handleEdit(item)">编辑</a>
+      <span class="actions" slot="action" slot-scope="text, item">
+        <a v-if="$auth('/market/coupon/update')" @click="handleEdit(item)">编辑</a>
         <a v-action:delete @click="handleDelete(item)">删除</a>
       </span>
     </s-table>
@@ -72,11 +77,9 @@
 </template>
 
 <script>
+import { STable } from '@/components'
 import * as ArticleApi from '@/api/content/article'
 import * as CategoryApi from '@/api/content/article/category'
-import { ContentHeader, STable } from '@/components'
-import EditForm from './modules/EditForm'
-import AddForm from './modules/AddForm'
 
 // 表格表头
 const columns = [
@@ -99,6 +102,10 @@ const columns = [
     title: '所属分类',
     dataIndex: 'category',
     scopedSlots: { customRender: 'category' }
+  },
+  {
+    title: '实际阅读量',
+    dataIndex: 'actual_views'
   },
   {
     title: '状态',
@@ -130,12 +137,7 @@ const columns = [
 
 export default {
   name: 'Index',
-  components: {
-    ContentHeader,
-    STable,
-    AddForm,
-    EditForm
-  },
+  components: { STable },
   data () {
     return {
       // 正在加载
@@ -196,12 +198,12 @@ export default {
 
     // 新增记录
     handleAdd () {
-      this.$refs.AddForm.add()
+      this.$router.push('./create')
     },
 
     // 编辑记录
     handleEdit (item) {
-      this.$refs.EditForm.edit(item.article_id)
+      this.$router.push({ path: './update', query: { articleId: item.article_id } })
     },
 
     /**
