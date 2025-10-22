@@ -4,6 +4,7 @@ import { axios } from '@/utils/request'
 const api = {
   updatePrice: '/order.event/updatePrice',
   updateRemark: '/order.event/updateRemark',
+  updateAddress: '/order.event/updateAddress',
   confirmCancel: '/order.event/confirmCancel',
   delete: '/order.event/delete',
   printer: '/order.event/printer'
@@ -28,6 +29,18 @@ export function updatePrice (data) {
 export function updateRemark (data) {
   return axios({
     url: api.updateRemark,
+    method: 'post',
+    data
+  })
+}
+
+/**
+ * 修改收货地址
+ * @param {*} data
+ */
+export function updateAddress (data) {
+  return axios({
+    url: api.updateAddress,
     method: 'post',
     data
   })

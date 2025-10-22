@@ -60,7 +60,7 @@
           <!-- 操作栏 -->
           <div class="actions clearfix mt-10">
             <div
-              v-if="$module('order-updatePrice') &&$auth('/order/detail.updatePrice')"
+              v-if="$module('order-updatePrice') && $auth('/order/detail.updatePrice')"
               class="action-item"
             >
               <a-button
@@ -89,6 +89,16 @@
             </div>
             <div class="action-item" v-if="$auth('/order/detail.merchantRemark')">
               <a-button @click="handleMerchantRemark">商家备注</a-button>
+            </div>
+            <div class="action-item" v-if="$auth('/order/detail.updateAddress')">
+              <a-button
+                v-if="(
+                    record.delivery_type == DeliveryTypeEnum.EXPRESS.value
+                    && record.delivery_status != DeliveryStatusEnum.DELIVERED.value
+                    && !inArray(record.order_status, [OrderStatusEnum.CANCELLED.value, OrderStatusEnum.APPLY_CANCEL.value])
+                )"
+                @click="handleUpdateAddress()"
+              >修改收货地址</a-button>
             </div>
             <div
               v-if="$module('order-printer') && $auth('/order/detail.printer')"
@@ -303,6 +313,7 @@
     <PrinterForm ref="PrinterForm" @handleSubmit="handleRefresh" />
     <PriceForm ref="PriceForm" @handleSubmit="handleRefresh" />
     <RemarkForm ref="RemarkForm" @handleSubmit="handleRefresh" />
+    <AddressForm ref="AddressForm" @handleSubmit="handleRefresh" />
     <ExpressForm ref="ExpressForm" />
   </div>
 </template>
@@ -311,7 +322,7 @@
 import { inArray } from '@/utils/util'
 import * as Api from '@/api/order'
 import { GoodsItem, UserItem } from '@/components/Table'
-import { DeliveryForm, CancelForm, PrinterForm, PriceForm, RemarkForm, ExpressForm } from './modules'
+import { DeliveryForm, CancelForm, PrinterForm, PriceForm, RemarkForm, ExpressForm, AddressForm } from './modules'
 import {
   OrderTypeEnum,
   DeliveryStatusEnum,
@@ -367,7 +378,8 @@ export default {
     PrinterForm,
     PriceForm,
     RemarkForm,
-    ExpressForm
+    ExpressForm,
+    AddressForm
   },
   data () {
     return {
@@ -486,6 +498,12 @@ export default {
     handleUpdatePrice () {
       const { record } = this
       this.$refs.PriceForm.show(record)
+    },
+
+    // 修改收货地址
+    handleUpdateAddress () {
+      const { record } = this
+      this.$refs.AddressForm.show(record)
     },
 
     // 商家备注
