@@ -119,14 +119,25 @@
                         <td :rowspan="item.goods.length">
                           <a-tooltip v-if="item.pay_method">
                             <template
+                              v-if="item.trade"
                               slot="title"
-                            >第三方支付订单号: {{ item.trade ? item.trade.out_trade_no : '-' }}</template>
+                            >第三方支付订单号: {{ item.trade.out_trade_no }}</template>
                             <a-tag>{{ PaymentMethodEnum[item.pay_method].name }}</a-tag>
                           </a-tooltip>
                           <span v-else>--</span>
                         </td>
                         <td :rowspan="item.goods.length">
-                          <a-tag>{{ DeliveryTypeEnum[item.delivery_type].name }}</a-tag>
+                          <a-tooltip>
+                            <template
+                              v-if="item.delivery_type == DeliveryTypeEnum.EXPRESS.value && item.address"
+                              slot="title"
+                            >
+                              <p>姓名：{{ item.address.name }}</p>
+                              <p>电话：{{ item.address.phone }}</p>
+                              <p>地址：{{ item.address.region.province }} {{ item.address.region.city }} {{ item.address.region.region }} {{ item.address.detail }}</p>
+                            </template>
+                            <a-tag>{{ DeliveryTypeEnum[item.delivery_type].name }}</a-tag>
+                          </a-tooltip>
                         </td>
                         <td :rowspan="item.goods.length">
                           <p class="mtb-2">

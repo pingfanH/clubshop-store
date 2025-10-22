@@ -21,6 +21,16 @@
                 </a-select>
               </a-input>
             </a-form-item>
+            <a-form-item label="发货方式">
+              <a-select v-decorator="['deliveryMethod', { initialValue: -1 }]">
+                <a-select-option :value="-1">全部</a-select-option>
+                <a-select-option
+                  v-for="(item, index) in DeliveryMethodEnum.data"
+                  :key="index"
+                  :value="item.value"
+                >{{ item.name }}</a-select-option>
+              </a-select>
+            </a-form-item>
             <a-form-item label="发货时间">
               <a-range-picker format="YYYY-MM-DD" v-decorator="['betweenTime']" />
             </a-form-item>
@@ -238,9 +248,7 @@ export default {
       const { queryParam, page } = this
       this.isLoading = true
       return Api.list({ ...queryParam, page })
-        .then(response => {
-          this.orderList = response.data.list
-        })
+        .then(response => this.orderList = response.data.list)
         .finally(() => this.isLoading = false)
     },
 
