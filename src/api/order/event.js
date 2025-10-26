@@ -36,12 +36,14 @@ export function updateRemark (data) {
 
 /**
  * 修改收货地址
+ * @param {Number} orderId
  * @param {*} data
  */
-export function updateAddress (data) {
+export function updateAddress (orderId, data) {
   return axios({
     url: api.updateAddress,
     method: 'post',
+    params: { orderId },
     data
   })
 }
