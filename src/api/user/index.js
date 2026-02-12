@@ -7,15 +7,25 @@ const api = {
   recharge: '/user/recharge',
   grade: '/user/grade',
   add: '/user/add',
-  delete: '/user/delete'
+  delete: '/user/delete',
+  setTest: '/user/setTest'
 }
 
-// 列表记录
+// 用户列表
 export function list (params) {
   return axios({
     url: api.list,
     method: 'get',
     params
+  })
+}
+
+// 设置/取消测试用户
+export function setTest (data) {
+  return axios({
+    url: api.setTest,
+    method: 'post',
+    data
   })
 }
 

@@ -79,6 +79,10 @@
       <span slot="platform" class="platform" slot-scope="text">
         <platform-icon :name="text" :showTips="true" :iconSize="17" />
       </span>
+      <!-- 测试账号 -->
+      <span slot="is_test" slot-scope="text">
+        <a-tag :color="text ? 'green' : ''">{{ text ? '是' : '否' }}</a-tag>
+      </span>
       <!-- 操作 -->
       <span class="actions" slot="action" slot-scope="item">
         <a
@@ -89,6 +93,7 @@
         >充值</a>
         <a v-if="$module('user-grade')" v-action:grade @click="handleGrade(item)" title="会员等级">等级</a>
         <a v-action:delete @click="handleDelete(item)">删除</a>
+        <a v-action:edit @click="handleSetTest(item)">{{ item.is_test ? '取消测试' : '设为测试' }}</a>
       </span>
     </s-table>
     <GradeForm ref="GradeForm" :gradeList="gradeList" @handleSubmit="handleRefresh" />
@@ -119,6 +124,11 @@ const columns = filterModules([
   {
     title: '昵称/手机号',
     scopedSlots: { customRender: 'main_info' }
+  },
+  {
+    title: '测试账号',
+    dataIndex: 'is_test',
+    scopedSlots: { customRender: 'is_test' }
   },
   {
     title: '会员等级',
@@ -186,6 +196,26 @@ export default {
     this.getGradeList()
   },
   methods: {
+
+    /**
+     * 设为/取消测试用户
+     */
+    handleSetTest (item) {
+      const that = this
+      const isTest = item.is_test ? 0 : 1
+      const action = isTest ? '设为' : '取消'
+      this.$confirm({
+        title: '提示',
+        content: `确定要将该用户${action}测试账号吗？`,
+        onOk () {
+          Api.setTest({ userId: item.user_id, isTest })
+            .then(result => {
+              that.$message.success(result.message, 1.5)
+              that.handleRefresh()
+            })
+        }
+      })
+    },
 
     // 新增用户
     handleAdd () {
