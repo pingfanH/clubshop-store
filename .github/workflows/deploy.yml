@@ -35,5 +35,5 @@ jobs:
         username: ${{ secrets.REMOTE_USER }}
         key: ${{ secrets.SSH_PRIVATE_KEY }}
         source: "dist/*"
-        target: "/www/wwwroot/yoshop2.0-store"
+        target: "/opt/1panel/www/sites/deram.shop/index/public/store"
         strip_components: 1
