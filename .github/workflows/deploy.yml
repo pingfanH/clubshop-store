@@ -1,0 +1,39 @@
+name: Deploy Store
+
+on:
+  push:
+    branches:
+      - master
+  workflow_dispatch:
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '16'
+        cache: 'yarn'
+
+    - name: Install Dependencies
+      run: yarn install --frozen-lockfile
+
+    - name: Build Project
+      env:
+        NODE_OPTIONS: --openssl-legacy-provider
+      run: yarn run vue-cli-service build
+
+    - name: Deploy to Server
+      uses: appleboy/scp-action@master
+      with:
+        host: ${{ secrets.REMOTE_HOST }}
+        username: ${{ secrets.REMOTE_USER }}
+        key: ${{ secrets.SSH_PRIVATE_KEY }}
+        source: "dist/*"
+        target: "/www/wwwroot/yoshop2.0-store"
+        strip_components: 1
