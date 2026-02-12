@@ -6,6 +6,7 @@ const api = {
   detail: '/user/detail',
   recharge: '/user/recharge',
   grade: '/user/grade',
+  add: '/user/add',
   delete: '/user/delete'
 }
 
@@ -46,6 +47,18 @@ export function recharge (data) {
 export function grade (data) {
   return axios({
     url: api.grade,
+    method: 'post',
+    data
+  })
+}
+
+/**
+ * 新增用户
+ * @param {*} data
+ */
+export function add (data) {
+  return axios({
+    url: api.add,
     method: 'post',
     data
   })

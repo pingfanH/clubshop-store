@@ -26,6 +26,15 @@
           </a-form-item>
         </a-form>
       </a-row>
+      <div class="row-item-tab clearfix">
+        <a-button
+          v-action:add
+          class="fl-l"
+          type="primary"
+          icon="plus"
+          @click="handleAdd()"
+        >新建用户</a-button>
+      </div>
     </div>
     <s-table
       ref="table"
@@ -84,6 +93,7 @@
     </s-table>
     <GradeForm ref="GradeForm" :gradeList="gradeList" @handleSubmit="handleRefresh" />
     <RechargeForm ref="RechargeForm" @handleSubmit="handleRefresh" />
+    <AddForm ref="AddForm" @handleSubmit="handleRefresh" />
   </a-card>
 </template>
 
@@ -93,7 +103,7 @@ import * as Api from '@/api/user'
 import * as GradeApi from '@/api/user/grade'
 import { STable } from '@/components'
 import PlatformIcon from '@/components/PlatformIcon'
-import { GradeForm, RechargeForm } from './modules'
+import { GradeForm, RechargeForm, AddForm } from './modules'
 
 // table表头
 const columns = filterModules([
@@ -149,6 +159,7 @@ export default {
     STable,
     GradeForm,
     RechargeForm,
+    AddForm,
     PlatformIcon
   },
   data () {
@@ -175,6 +186,11 @@ export default {
     this.getGradeList()
   },
   methods: {
+
+    // 新增用户
+    handleAdd () {
+      this.$refs.AddForm.add()
+    },
 
     // 获取会员等级列表
     getGradeList () {

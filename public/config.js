@@ -8,9 +8,9 @@ window.publicConfig = {
   BASE_API: 'http://yoshop2-feel.cn/index.php?s=/store',
 
   // 图片文件上传大小 (单位mb)
-  uploadImageSize: 2,
+  uploadImageSize: 10,
 
   // 视频文件上传大小 (单位mb)
-  uploadVideoSize: 20
+  uploadVideoSize: 200
 
 }
