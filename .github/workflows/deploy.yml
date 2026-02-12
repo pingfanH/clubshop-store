@@ -26,7 +26,7 @@ jobs:
     - name: Build Project
       env:
         NODE_OPTIONS: --openssl-legacy-provider
-      run: yarn run vue-cli-service build
+      run: npm run build
 
     - name: Deploy to Server
       uses: appleboy/scp-action@master
