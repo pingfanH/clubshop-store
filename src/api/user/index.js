@@ -8,7 +8,8 @@ const api = {
   grade: '/user/grade',
   add: '/user/add',
   delete: '/user/delete',
-  setTest: '/user/setTest'
+  setTest: '/user/setTest',
+  setMerchant: '/user/setMerchant'
 }
 
 // 用户列表
@@ -24,6 +25,15 @@ export function list (params) {
 export function setTest (data) {
   return axios({
     url: api.setTest,
+    method: 'post',
+    data
+  })
+}
+
+// 设置/取消商家
+export function setMerchant (data) {
+  return axios({
+    url: api.setMerchant,
     method: 'post',
     data
   })

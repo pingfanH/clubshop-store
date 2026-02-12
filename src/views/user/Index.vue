@@ -83,6 +83,10 @@
       <span slot="is_test" slot-scope="text">
         <a-tag :color="text ? 'green' : ''">{{ text ? '是' : '否' }}</a-tag>
       </span>
+      <!-- 是否商家 -->
+      <span slot="is_merchant" slot-scope="text">
+        <a-tag :color="text ? 'blue' : ''">{{ text ? '是' : '否' }}</a-tag>
+      </span>
       <!-- 操作 -->
       <span class="actions" slot="action" slot-scope="item">
         <a
@@ -94,6 +98,7 @@
         <a v-if="$module('user-grade')" v-action:grade @click="handleGrade(item)" title="会员等级">等级</a>
         <a v-action:delete @click="handleDelete(item)">删除</a>
         <a v-action:edit @click="handleSetTest(item)">{{ item.is_test ? '取消测试' : '设为测试' }}</a>
+        <a v-action:edit @click="handleSetMerchant(item)">{{ item.merchant ? '取消商家' : '设为商家' }}</a>
       </span>
     </s-table>
     <GradeForm ref="GradeForm" :gradeList="gradeList" @handleSubmit="handleRefresh" />
@@ -129,6 +134,11 @@ const columns = filterModules([
     title: '测试账号',
     dataIndex: 'is_test',
     scopedSlots: { customRender: 'is_test' }
+  },
+  {
+    title: '是否商家',
+    dataIndex: 'merchant',
+    scopedSlots: { customRender: 'is_merchant' }
   },
   {
     title: '会员等级',
@@ -209,6 +219,26 @@ export default {
         content: `确定要将该用户${action}测试账号吗？`,
         onOk () {
           Api.setTest({ userId: item.user_id, isTest })
+            .then(result => {
+              that.$message.success(result.message, 1.5)
+              that.handleRefresh()
+            })
+        }
+      })
+    },
+
+    /**
+     * 设为/取消商家
+     */
+    handleSetMerchant (item) {
+      const that = this
+      const isMerchant = item.merchant ? 0 : 1
+      const action = isMerchant ? '设为' : '取消'
+      this.$confirm({
+        title: '提示',
+        content: `确定要将该用户${action}商家吗？`,
+        onOk () {
+          Api.setMerchant({ userId: item.user_id, isMerchant })
             .then(result => {
               that.$message.success(result.message, 1.5)
               that.handleRefresh()
