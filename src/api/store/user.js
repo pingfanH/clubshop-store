@@ -30,6 +30,14 @@ export function renew (data) {
   })
 }
 
+// 获取所有商家用户列表
+export function getAllMerchants () {
+  return axios({
+    url: '/store.user/getAllMerchants',
+    method: 'get'
+  })
+}
+
 // 管理员列表
 export function list (params) {
   return axios({

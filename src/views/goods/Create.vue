@@ -40,6 +40,24 @@
               </div>
             </a-form-item>
             <a-form-item
+              v-if="!userInfo.is_merchant"
+              label="所属商家"
+              :labelCol="labelCol"
+              :wrapperCol="wrapperCol"
+            >
+              <a-select
+                v-decorator="['merchant_id', { initialValue: 0, rules: [{ required: true, message: '请选择所属商家' }] }]"
+                placeholder="请选择所属商家"
+              >
+                <a-select-option :value="0">平台自营</a-select-option>
+                <a-select-option
+                  v-for="(item, index) in merchantList"
+                  :key="index"
+                  :value="item.merchant_id"
+                >{{ item.real_name }}</a-select-option>
+              </a-select>
+            </a-form-item>
+            <a-form-item
               label="商品图片"
               :labelCol="labelCol"
               :wrapperCol="wrapperCol"
@@ -85,7 +103,7 @@
             >
               <a-select
                 style="width: 300px"
-                v-decorator="['delivery_id', { rules: [{ required: true, message: '请选择运费模板'  }] }]"
+                v-decorator="['delivery_id', { rules: [{ required: true, message: '请选择运费模板' }] }]"
                 placeholder="请选择运费模板"
               >
                 <a-select-option
@@ -382,9 +400,11 @@
 
 <script>
 import * as GoodsApi from '@/api/goods'
+import * as UserApi from '@/api/store/user'
 import { SelectImage, SelectVideo, Ueditor, InputNumberGroup } from '@/components'
 import GoodsModel from '@/common/model/goods/Index'
 import { GoodsType, MultiSpec } from './modules'
+import { mapGetters } from 'vuex'
 
 export default {
   components: {
@@ -397,6 +417,8 @@ export default {
   },
   data () {
     return {
+      // 商家列表
+      merchantList: [],
       // 默认的标签索引
       tabKey: 0,
       // 标签布局属性
@@ -412,6 +434,9 @@ export default {
       formData: GoodsModel.formData
     }
   },
+  computed: {
+    ...mapGetters(['userInfo'])
+  },
   // 初始化数据
   created () {
     this.isLoading = true
@@ -420,6 +445,12 @@ export default {
       .then(() => {
         this.isLoading = false
       })
+    // 获取商家列表
+    if (!this.userInfo.is_merchant) {
+      UserApi.getAllMerchants().then(response => {
+        this.merchantList = response.data.list
+      })
+    }
   },
   methods: {
 

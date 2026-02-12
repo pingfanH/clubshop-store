@@ -41,6 +41,24 @@
               </div>
             </a-form-item>
             <a-form-item
+              v-if="!userInfo.is_merchant"
+              label="所属商家"
+              :labelCol="labelCol"
+              :wrapperCol="wrapperCol"
+            >
+              <a-select
+                v-decorator="['merchant_id', { rules: [{ required: true, message: '请选择所属商家' }] }]"
+                placeholder="请选择所属商家"
+              >
+                <a-select-option :value="0">平台自营</a-select-option>
+                <a-select-option
+                  v-for="(item, index) in merchantList"
+                  :key="index"
+                  :value="item.merchant_id"
+                >{{ item.real_name }}</a-select-option>
+              </a-select>
+            </a-form-item>
+            <a-form-item
               label="商品图片"
               :labelCol="labelCol"
               :wrapperCol="wrapperCol"
@@ -399,10 +417,12 @@
 
 <script>
 import * as GoodsApi from '@/api/goods'
+import * as UserApi from '@/api/store/user'
 import { SelectImage, SelectVideo, Ueditor, InputNumberGroup } from '@/components'
 import GoodsModel from '@/common/model/goods/Index'
 import { GoodsType, MultiSpec } from './modules'
 import { isEmptyObject } from '@/utils/util'
+import { mapGetters } from 'vuex'
 
 export default {
   components: {
@@ -415,6 +435,8 @@ export default {
   },
   data () {
     return {
+      // 商家列表
+      merchantList: [],
       // 默认的标签索引
       tabKey: 0,
       // 标签布局属性
@@ -431,6 +453,9 @@ export default {
       // 表单数据
       formData: GoodsModel.formData
     }
+  },
+  computed: {
+    ...mapGetters(['userInfo'])
   },
   created () {
     // 初始化数据
@@ -458,6 +483,12 @@ export default {
             this.$nextTick(() => {
               this.form.setFieldsValue(GoodsModel.getFieldsValue2())
               this.onForceUpdate()
+            })
+          }
+          // 获取商家列表
+          if (!this.userInfo.is_merchant) {
+            UserApi.getAllMerchants().then(response => {
+              this.merchantList = response.data.list
             })
           }
           this.isLoading = false

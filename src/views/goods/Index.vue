@@ -32,6 +32,7 @@
             <a-radio-button value="on_sale">出售中</a-radio-button>
             <a-radio-button value="off_sale">已下架</a-radio-button>
             <a-radio-button value="sold_out">已售罄</a-radio-button>
+            <a-radio-button value="audit_pending">待审核</a-radio-button>
           </a-radio-group>
         </div>
         <a-button
@@ -78,6 +79,11 @@
       <span slot="goods_name" slot-scope="text">
         <p class="twoline-hide" style="width: 270px;">{{ text }}</p>
       </span>
+      <!-- 所属商家 -->
+      <span slot="merchant_name" slot-scope="text">
+        <span v-if="text">{{ text }}</span>
+        <span v-else>平台自营</span>
+      </span>
       <!-- 商品价格 -->
       <span slot="goods_price_min" slot-scope="text">
         <span class="c-p">¥{{ text }}</span>
@@ -90,8 +96,16 @@
           @click="handleUpdateStatus([item.goods_id], text != 10)"
         >{{ text == 10 ? '上架' : '下架' }}</a-tag>
       </span>
+      <!-- 审核状态 -->
+      <span slot="audit_status" slot-scope="text">
+        <a-tag v-if="text == 10" color="green">通过</a-tag>
+        <a-tag v-else-if="text == 20" color="orange">待审核</a-tag>
+        <a-tag v-else-if="text == 30" color="red">驳回</a-tag>
+      </span>
       <!-- 操作项 -->
       <div class="actions" slot="action" slot-scope="text, item">
+        <a v-if="!userInfo.is_merchant && item.audit_status == 20" @click="handleAudit(item.goods_id, 10)">通过</a>
+        <a v-if="!userInfo.is_merchant && item.audit_status == 20" @click="handleAudit(item.goods_id, 30)">驳回</a>
         <router-link
           v-if="$auth('/goods/update')"
           :to="{ path: '/goods/update', query: { goodsId: item.goods_id } }"
@@ -106,6 +120,7 @@
 import * as GoodsApi from '@/api/goods'
 import { ContentHeader, STable } from '@/components'
 import CategoryModel from '@/common/model/Category'
+import { mapGetters } from 'vuex'
 
 // 表格表头
 const columns = [
@@ -141,6 +156,11 @@ const columns = [
     title: '状态',
     dataIndex: 'status',
     scopedSlots: { customRender: 'status' }
+  },
+  {
+    title: '审核状态',
+    dataIndex: 'audit_status',
+    scopedSlots: { customRender: 'audit_status' }
   },
   {
     title: '排序',
@@ -198,8 +218,17 @@ export default {
     }
     // 获取商品分类列表
     this.getCategoryList()
+    // 非商家用户显示所属商家列
+    if (!this.userInfo.is_merchant) {
+      this.columns.splice(3, 0, {
+        title: '所属商家',
+        dataIndex: 'merchant.real_name',
+        scopedSlots: { customRender: 'merchant_name' }
+      })
+    }
   },
   computed: {
+    ...mapGetters(['userInfo']),
     rowSelection () {
       return {
         selectedRowKeys: this.selectedRowKeys,
@@ -290,6 +319,23 @@ export default {
     handleRefresh (bool = false) {
       this.selectedRowKeys = []
       this.$refs.table.refresh(bool)
+    },
+
+    // 审核商品
+    handleAudit (goodsId, state) {
+      const app = this
+      const action = state === 10 ? '通过' : '驳回'
+      const modal = this.$confirm({
+        title: `您确定要${action}该商品吗?`,
+        onOk () {
+          return GoodsApi.audit({ goodsId, state })
+            .then(result => {
+              app.$message.success(result.message, 1.5)
+              app.handleRefresh()
+            })
+            .finally(result => modal.destroy())
+        }
+      })
     }
 
   }

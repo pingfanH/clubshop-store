@@ -9,7 +9,8 @@ const api = {
   add: '/goods/add',
   edit: '/goods/edit',
   delete: '/goods/delete',
-  state: '/goods/state'
+  state: '/goods/state',
+  audit: '/goods/audit'
 }
 
 // 列表记录
@@ -79,6 +80,18 @@ export function add (data) {
 export function edit (data) {
   return axios({
     url: api.edit,
+    method: 'post',
+    data
+  })
+}
+
+/**
+ * 审核商品
+ * @param {*} data
+ */
+export function audit (data) {
+  return axios({
+    url: api.audit,
     method: 'post',
     data
   })
