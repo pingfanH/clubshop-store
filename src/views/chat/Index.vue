@@ -314,6 +314,7 @@ export default {
   display: flex;
   height: calc(100vh - 64px);
   background: #fff;
+  overflow: hidden;
 }
 
 .session-list {
@@ -321,6 +322,7 @@ export default {
   border-right: 1px solid #e8e8e8;
   display: flex;
   flex-direction: column;
+  overflow: hidden;
 }
 
 .session-header {
@@ -403,6 +405,7 @@ export default {
   flex: 1;
   display: flex;
   flex-direction: column;
+  overflow: hidden;
   
   &.empty {
     display: flex;
