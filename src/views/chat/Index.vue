@@ -165,6 +165,7 @@ export default {
       
       ChatApi.messages({
         user_id: this.currentSession.user_id,
+        merchant_id: this.currentSession.merchant_id,
         limit: 100
       }).then(res => {
         this.messageList = (res.data.list || []).reverse()
@@ -178,6 +179,7 @@ export default {
       const content = this.inputMessage
       ChatApi.send({
         user_id: this.currentSession.user_id,
+        merchant_id: this.currentSession.merchant_id,
         content: content,
         type: 10,
         use_store_identity: this.useStoreIdentity
@@ -233,6 +235,7 @@ export default {
       
       ChatApi.sendImage({
         user_id: this.currentSession.user_id,
+        merchant_id: this.currentSession.merchant_id,
         image_url: imageUrl,
         type: 20,
         use_store_identity: this.useStoreIdentity
