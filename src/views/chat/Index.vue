@@ -1,13 +1,14 @@
 <template>
-  <div class="chat-container">
-    <!-- 会话列表 -->
-    <div class="session-list">
-      <div class="session-header">
-        <span>用户会话</span>
-        <a-badge :count="totalUnread" />
-      </div>
-      <div class="session-body">
-        <div 
+  <div class="chat-wrapper">
+    <div class="chat-container">
+      <!-- 会话列表 -->
+      <div class="session-list">
+        <div class="session-header">
+          <span>用户会话</span>
+          <a-badge :count="totalUnread" />
+        </div>
+        <div class="session-body">
+          <div 
           v-for="(item, index) in sessionList" 
           :key="index" 
           class="session-item"
@@ -100,6 +101,7 @@
     </div>
     <div class="chat-detail empty" v-else>
       <a-empty description="选择一个会话开始聊天" />
+    </div>
     </div>
   </div>
 </template>
@@ -310,9 +312,19 @@ export default {
 </script>
 
 <style lang="less" scoped>
+.chat-wrapper {
+  position: relative;
+  height: 100%;
+  overflow: hidden;
+}
+
 .chat-container {
   display: flex;
-  height: calc(100vh - 64px);
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   background: #fff;
   overflow: hidden;
 }
