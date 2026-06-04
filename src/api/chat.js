@@ -1,4 +1,4 @@
-import request from '@/utils/request'
+import { axios } from '@/utils/request'
 
 // api地址
 const api = {
@@ -10,26 +10,45 @@ const api = {
 }
 
 // 获取会话列表
-export const sessions = () => {
-  return request.get(api.sessions)
+export function sessions() {
+  return axios({
+    url: api.sessions,
+    method: 'get'
+  })
 }
 
 // 获取聊天记录
-export const messages = (params = {}) => {
-  return request.get(api.messages, params)
+export function messages(params = {}) {
+  return axios({
+    url: api.messages,
+    method: 'get',
+    params
+  })
 }
 
 // 发送文本消息
-export const send = (data) => {
-  return request.post(api.send, data)
+export function send(data) {
+  return axios({
+    url: api.send,
+    method: 'post',
+    data
+  })
 }
 
 // 发送图片消息
-export const sendImage = (data) => {
-  return request.post(api.sendImage, data)
+export function sendImage(data) {
+  return axios({
+    url: api.sendImage,
+    method: 'post',
+    data
+  })
 }
 
 // 获取未读消息数
-export const unreadCount = () => {
-  return request.get(api.unreadCount, {}, { load: false })
+export function unreadCount() {
+  return axios({
+    url: api.unreadCount,
+    method: 'get',
+    params: { load: false }
+  })
 }
