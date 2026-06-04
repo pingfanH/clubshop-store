@@ -323,12 +323,15 @@ export default {
   display: flex;
   width: 100%;
   height: 100%;
+  max-width: 100%;
   background: #fff;
   overflow: hidden;
+  box-sizing: border-box;
 }
 
 .session-list {
   width: 320px;
+  min-width: 320px;
   border-right: 1px solid #e8e8e8;
   display: flex;
   flex-direction: column;
