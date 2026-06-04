@@ -52,7 +52,7 @@
           :class="{ 'message-mine': msg.sender_type === 20 }"
         >
           <div class="message-avatar">
-            <a-avatar :src="msg.sender_type === 10 ? currentSession.user_avatar : msg.sender_avatar" :icon="msg.sender_type === 10 ? 'user' : 'shop'" />
+            <a-avatar :src="msg.sender_type === 10 ? currentSession.user_avatar : (msg.sender_avatar || defaultStoreLogo)" :icon="msg.sender_type === 10 ? 'user' : 'shop'" />
           </div>
           <div class="message-content">
             <!-- 发送者名称（后台可见） -->
@@ -118,7 +118,8 @@ export default {
       loading: false,
       totalUnread: 0,
       refreshTimer: null,
-      useStoreIdentity: 1 // 默认使用店铺身份
+      useStoreIdentity: 1, // 默认使用店铺身份
+      defaultStoreLogo: '/favicon.ico' // 默认商城logo
     }
   },
   mounted() {
