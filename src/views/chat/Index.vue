@@ -52,9 +52,14 @@
           :class="{ 'message-mine': msg.sender_type === 20 }"
         >
           <div class="message-avatar">
-            <a-avatar :src="msg.sender_type === 10 ? currentSession.user_avatar : ''" :icon="msg.sender_type === 10 ? 'user' : 'shop'" />
+            <a-avatar :src="msg.sender_type === 10 ? currentSession.user_avatar : msg.sender_avatar" :icon="msg.sender_type === 10 ? 'user' : 'shop'" />
           </div>
           <div class="message-content">
+            <!-- 发送者名称（后台可见） -->
+            <div v-if="msg.sender_type === 20" class="message-sender">
+              {{ msg.sender_name || '店铺' }}
+              <span v-if="msg.store_user_id > 0" class="sender-id">(ID: {{ msg.store_user_id }})</span>
+            </div>
             <!-- 文本消息 -->
             <div v-if="msg.type === 10" class="message-text">{{ msg.content }}</div>
             <!-- 图片消息 -->
@@ -83,6 +88,10 @@
           >
             <a-button icon="picture" />
           </a-upload>
+          <a-radio-group v-model="useStoreIdentity" class="identity-switch">
+            <a-radio-button :value="1">店铺身份</a-radio-button>
+            <a-radio-button :value="0">个人身份</a-radio-button>
+          </a-radio-group>
         </div>
         <a-input v-model="inputMessage" placeholder="输入消息..." @pressEnter="onSendMessage">
           <a-button slot="append" type="primary" @click="onSendMessage">发送</a-button>
@@ -108,7 +117,8 @@ export default {
       inputMessage: '',
       loading: false,
       totalUnread: 0,
-      refreshTimer: null
+      refreshTimer: null,
+      useStoreIdentity: 1 // 默认使用店铺身份
     }
   },
   mounted() {
@@ -168,12 +178,16 @@ export default {
       ChatApi.send({
         user_id: this.currentSession.user_id,
         content: content,
-        type: 10
-      }).then(() => {
+        type: 10,
+        use_store_identity: this.useStoreIdentity
+      }).then(res => {
         // 添加到消息列表
         this.messageList.push({
-          message_id: Date.now(),
+          message_id: res.data.message_id || Date.now(),
           sender_type: 20,
+          sender_name: res.data.sender_name || (this.useStoreIdentity ? '店铺' : '我'),
+          sender_avatar: '',
+          store_user_id: this.useStoreIdentity ? 0 : 1,
           content: content,
           type: 10,
           create_time: Math.floor(Date.now() / 1000)
@@ -219,11 +233,14 @@ export default {
       ChatApi.sendImage({
         user_id: this.currentSession.user_id,
         image_url: imageUrl,
-        type: 20
-      }).then(() => {
+        type: 20,
+        use_store_identity: this.useStoreIdentity
+      }).then(res => {
         this.messageList.push({
           message_id: Date.now(),
           sender_type: 20,
+          sender_name: res.data.sender_name || (this.useStoreIdentity ? '店铺' : '我'),
+          sender_avatar: '',
           content: imageUrl,
           type: 20,
           create_time: Math.floor(Date.now() / 1000)
@@ -426,6 +443,11 @@ export default {
     .message-content {
       margin-right: 12px;
       margin-left: 0;
+      text-align: right;
+    }
+    
+    .message-sender {
+      text-align: right;
     }
     
     .message-text {
@@ -442,6 +464,16 @@ export default {
 .message-content {
   margin-left: 12px;
   max-width: 70%;
+}
+
+.message-sender {
+  font-size: 12px;
+  color: #999;
+  margin-bottom: 4px;
+  
+  .sender-id {
+    color: #1890ff;
+  }
 }
 
 .message-text {
@@ -496,11 +528,15 @@ export default {
 .chat-input {
   padding: 16px;
   border-top: 1px solid #e8e8e8;
-  display: flex;
-  align-items: center;
   
   .input-actions {
-    margin-right: 12px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 12px;
+    
+    .identity-switch {
+      margin-left: 12px;
+    }
   }
 }
 
