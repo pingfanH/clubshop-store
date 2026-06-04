@@ -56,9 +56,9 @@
             <a-avatar :src="msg.sender_type === 10 ? currentSession.user_avatar : (msg.sender_avatar || defaultStoreLogo)" :icon="msg.sender_type === 10 ? 'user' : 'shop'" />
           </div>
           <div class="message-content">
-            <!-- 发送者名称（后台可见） -->
-            <div v-if="msg.sender_type === 20" class="message-sender">
-              {{ msg.sender_name || '店铺' }}
+            <!-- 发送者名称（后台可见，匿名时不显示） -->
+            <div v-if="msg.sender_type === 20 && msg.sender_name" class="message-sender">
+              {{ msg.sender_name }}
               <span v-if="msg.store_user_id > 0" class="sender-id">(ID: {{ msg.store_user_id }})</span>
             </div>
             <!-- 文本消息 -->
