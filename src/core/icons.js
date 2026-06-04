@@ -19,6 +19,7 @@ import user from '@/assets/icons/user.svg?inline'
 import market from '@/assets/icons/market.svg?inline'
 import statistics from '@/assets/icons/statistics.svg?inline'
 import apps from '@/assets/icons/apps.svg?inline'
+import message from '@/assets/icons/message.svg?inline'
 
 // 通用图标
 import arrowRight from '@/assets/icons/arrow-right.svg?inline'
@@ -36,7 +37,7 @@ import payWechat from '@/assets/icons/payment/wechat.svg?inline'
 import payOffline from '@/assets/icons/payment/offline.svg?inline'
 
 export {
-  home, manage, goods, order, content, setting, shop, user, market, statistics, apps,
+  home, manage, goods, order, content, setting, shop, user, market, statistics, apps, message,
   arrowRight, h5, mpWeixin, h5Weixin, app, mpAlipay, link,
   payAlipay, payBalance, payWechat, payOffline
 }

@@ -268,6 +268,22 @@ export const asyncRouterMap = [
         ]
       },
 
+      // 聊天管理
+      {
+        path: '/chat',
+        name: 'chat',
+        component: RouteView,
+        redirect: '/chat/index',
+        meta: { title: '聊天管理', icon: Icons.message, permission: ['/chat'] },
+        children: [
+          {
+            path: '/chat/index',
+            component: () => import(/* webpackChunkName: "chat" */ '@/views/chat/Index'),
+            meta: { title: '用户会话', keepAlive: true, permission: ['/chat/index'] }
+          }
+        ]
+      },
+
       // 会员管理
       {
         path: '/user',
