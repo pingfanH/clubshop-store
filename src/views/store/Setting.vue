@@ -11,6 +11,19 @@
         <a-form-item label="商城简介" :labelCol="labelCol" :wrapperCol="wrapperCol">
           <a-textarea v-decorator="['describe']" :autoSize="{ minRows: 4, maxRows: 8 }" />
         </a-form-item>
+        <a-form-item label="店铺地址" :labelCol="labelCol" :wrapperCol="wrapperCol">
+          <a-input v-decorator="['location_address']" placeholder="如: 上海市浦东新区" />
+        </a-form-item>
+        <a-form-item label="店铺坐标" :labelCol="labelCol" :wrapperCol="wrapperCol" extra="用于定位匹配附近店铺，可通过地图获取经纬度">
+          <a-row :gutter="8">
+            <a-col :span="12">
+              <a-input v-decorator="['longitude']" placeholder="经度 (如: 121.473701)" />
+            </a-col>
+            <a-col :span="12">
+              <a-input v-decorator="['latitude']" placeholder="纬度 (如: 31.230416)" />
+            </a-col>
+          </a-row>
+        </a-form-item>
         <a-form-item
           label="商城Logo"
           :labelCol="labelCol"
@@ -78,7 +91,7 @@ export default {
       const { record, form: { setFieldsValue } } = this
       // 表单内容
       this.$nextTick(() => {
-        setFieldsValue(pick(record, ['store_name', 'describe', 'logo_image_id']))
+        setFieldsValue(pick(record, ['store_name', 'describe', 'logo_image_id', 'location_address', 'longitude', 'latitude']))
       })
     },
 
