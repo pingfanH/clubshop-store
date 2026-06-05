@@ -15,8 +15,7 @@ const publicConfig = store.getters.publicConfig
 // 创建 axios 实例
 const service = axios.create({
   // 服务端api地址
-  // baseURL: process.env.NODE_ENV === 'production' ? publicConfig.BASE_API : process.env.VUE_APP_API_BASE_URL,
-  baseURL: publicConfig.BASE_API,
+  baseURL: process.env.VUE_APP_BASE_API || publicConfig.BASE_API,
   timeout: 60 * 1000 // 请求超时时间，60秒, 如果上传大文件需要更长
 })
 
