@@ -15,12 +15,10 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 16
+          node-version: 18
 
       - name: Install dependencies
-        run: |
-          yarn config set ignore-engines true
-          yarn install --frozen-lockfile
+        run: yarn install --frozen-lockfile
 
       - name: Build project
         run: yarn build
