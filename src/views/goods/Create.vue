@@ -54,7 +54,7 @@
                   v-for="(item, index) in merchantList"
                   :key="index"
                   :value="item.merchant_id"
-                >{{ item.name }}</a-select-option>
+                >{{ item.name }} (ID: {{ item.merchant_id }})</a-select-option>
               </a-select>
             </a-form-item>
             <a-form-item
