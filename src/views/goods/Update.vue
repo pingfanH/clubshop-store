@@ -50,7 +50,6 @@
                 v-decorator="['merchant_id', { rules: [{ required: true, message: '请选择所属商家' }] }]"
                 placeholder="请选择所属商家"
               >
-                <a-select-option :value="0">平台自营</a-select-option>
                 <a-select-option
                   v-for="(item, index) in merchantList"
                   :key="index"
