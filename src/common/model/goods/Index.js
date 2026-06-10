@@ -77,7 +77,8 @@ export default {
       'goods_type', 'goods_name', 'categorys', 'goods_no', 'sort',
       'status', 'spec_type', 'deduct_stock_type', 'is_restrict', 'content',
       'selling_point', 'serviceIds', 'sales_initial', 'is_points_gift',
-      'is_points_discount', 'is_enable_grade', 'is_alone_grade', 'merchant_id'
+      'is_points_discount', 'is_enable_grade', 'is_alone_grade', 'merchant_id',
+      'pay_type', 'deposit_price'
     ])
     return {
       ...goodsFormData,
