@@ -272,7 +272,7 @@
               </a-radio-group>
             </a-form-item>
             <a-form-item
-              v-if="form.getFieldValue('pay_type') == 20"
+              v-show="form.getFieldValue('pay_type') == 20"
               label="定金金额"
               :labelCol="labelCol"
               :wrapperCol="wrapperCol"
@@ -282,7 +282,7 @@
                 :min="0.01"
                 :precision="2"
                 :step="0.01"
-                v-decorator="['deposit_price', { rules: [{ required: true, message: '请输入定金金额' }] }]"
+                v-decorator="['deposit_price']"
               />
               <span class="ml-10">元</span>
             </a-form-item>
