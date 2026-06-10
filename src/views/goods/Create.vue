@@ -255,29 +255,6 @@
 
           <!-- 更多设置 -->
           <div class="tab-pane" v-show="tabKey == 3">
-            <a-divider orientation="left">支付方式</a-divider>
-            <a-form-item label="支付方式" :labelCol="labelCol" :wrapperCol="wrapperCol">
-              <a-radio-group v-decorator="['pay_type', { initialValue: 10 }]" @change="onForceUpdate()">
-                <a-radio :value="10">全款购买</a-radio>
-                <a-radio :value="20">定金购买</a-radio>
-              </a-radio-group>
-            </a-form-item>
-            <a-form-item
-              v-show="form.getFieldValue('pay_type') == 20"
-              label="定金金额"
-              :labelCol="labelCol"
-              :wrapperCol="wrapperCol"
-              extra="用户需先支付的定金金额"
-            >
-              <a-input-number
-                :min="0.01"
-                :precision="2"
-                :step="0.01"
-                v-decorator="['deposit_price']"
-              />
-              <span class="ml-10">元</span>
-            </a-form-item>
-
             <a-divider orientation="left">视频/卖点</a-divider>
               label="主图视频"
               :labelCol="labelCol"
@@ -399,8 +376,31 @@
                       initialValue: formData.defaultUserGradeValue[item.grade_id], rules: [{ required: true, message: '折扣率不能为空' }]
                     }]"
                     />
-                  </a-form-item>
-                </div>
+            </a-form-item>
+            <!-- 支付方式 -->
+            <a-divider orientation="left">支付方式</a-divider>
+            <a-form-item label="支付方式" :labelCol="labelCol" :wrapperCol="wrapperCol">
+              <a-radio-group v-decorator="['pay_type', { initialValue: 10 }]" @change="onForceUpdate()">
+                <a-radio :value="10">全款购买</a-radio>
+                <a-radio :value="20">定金购买</a-radio>
+              </a-radio-group>
+            </a-form-item>
+            <a-form-item
+              v-show="form.getFieldValue('pay_type') == 20"
+              label="定金金额"
+              :labelCol="labelCol"
+              :wrapperCol="wrapperCol"
+              extra="用户需先支付的定金金额"
+            >
+              <a-input-number
+                :min="0.01"
+                :precision="2"
+                :step="0.01"
+                v-decorator="['deposit_price']"
+              />
+              <span class="ml-10">元</span>
+            </a-form-item>
+          </div>
                 <div class="form-item-help">
                   <p v-if="form.getFieldValue('is_alone_grade')" class="extra">
                     <span v-if="formData.userGradeList.length">单独折扣：折扣率范围0.0-9.9，例如: 9.8代表98折，0代表不折扣</span>

@@ -252,18 +252,7 @@
                 </a-form-item>
               </div>
             </a-form-item>
-          </div>
-          <!-- 商品详情 -->
-          <div class="tab-pane" v-show="tabKey == 2">
-            <a-form-item label="商品详情" :labelCol="labelCol" :wrapperCol="{span: 16}">
-              <Ueditor
-                v-decorator="['content', { rules: [{ required: true, message: '商品详情不能为空' }] }]"
-              />
-            </a-form-item>
-          </div>
-
-          <!-- 更多设置 -->
-          <div class="tab-pane" v-show="tabKey == 3">
+            <!-- 支付方式 -->
             <a-divider orientation="left">支付方式</a-divider>
             <a-form-item label="支付方式" :labelCol="labelCol" :wrapperCol="wrapperCol">
               <a-radio-group v-decorator="['pay_type', { initialValue: 10 }]" @change="onForceUpdate()">
@@ -286,7 +275,18 @@
               />
               <span class="ml-10">元</span>
             </a-form-item>
+          </div>
+          <!-- 商品详情 -->
+          <div class="tab-pane" v-show="tabKey == 2">
+            <a-form-item label="商品详情" :labelCol="labelCol" :wrapperCol="{span: 16}">
+              <Ueditor
+                v-decorator="['content', { rules: [{ required: true, message: '商品详情不能为空' }] }]"
+              />
+            </a-form-item>
+          </div>
 
+          <!-- 更多设置 -->
+          <div class="tab-pane" v-show="tabKey == 3">
             <a-divider orientation="left">视频/卖点</a-divider>
             <a-form-item
               label="主图视频"
